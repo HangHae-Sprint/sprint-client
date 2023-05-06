@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+import { Form } from 'react-router-dom'
 import Button from './component/Button'
 import useInput from './Hooks/useInput'
+import * as CSS from '../components/component/style'
+import Header from './Header'
+
 
 const SignUp = () => {
   const [userId,onChangeUserIdHandler]= useInput('')
@@ -36,16 +40,25 @@ const SignUp = () => {
   } 
   return (
     <>
-    <h1>회원가입</h1>
-    <form>
-    <input value={userId} onChange={onChangeUserIdHandler} placeholder='아이디'/>
-    <input value={password} onChange={onChangePasswordHandler} placeholder='비밀번호'/>
-    <input value={checkPassword} onChange={onChangeCheckPasswordHandler} placeholder='비밀번호 확인'/>
-    <input value={nickname} onChange={onChangeNicknameHandler} placeholder='닉네임'/>
-    <input value={email} onChange={onChangeEmailHandler} placeholder='이메일'/>
-    </form>
-    <div>{warningNotice}</div>
-    <Button onClick={onClickSingUpHandler}>회원가입</Button>
+    <Header/>
+    <CSS.Main>
+      <CSS.LoginBox>
+    <CSS.Title>회원가입</CSS.Title>
+    <CSS.Form>
+    <CSS.Input value={userId} onChange={onChangeUserIdHandler} placeholder='아이디'/>
+    <CSS.Input value={password} onChange={onChangePasswordHandler} placeholder='비밀번호'/>
+    <CSS.Input value={checkPassword} onChange={onChangeCheckPasswordHandler} placeholder='비밀번호 확인'/>
+    <CSS.Input value={nickname} onChange={onChangeNicknameHandler} placeholder='닉네임'/>
+    <CSS.Input value={email} onChange={onChangeEmailHandler} placeholder='이메일'/>
+    </CSS.Form>
+    <CSS.WarningNotice>{warningNotice}</CSS.WarningNotice>
+    <Button 
+    onClick={onClickSingUpHandler}
+    type='positive'
+    size='200'
+    >회원가입</Button>
+    </CSS.LoginBox>
+    </CSS.Main>
     </>
   )
 }

@@ -70,6 +70,7 @@ export const Button = styled.button`
 
 //Main
 export const Main = styled.main`
+
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -81,6 +82,7 @@ export const Main = styled.main`
   border: 1px solid gray;
   padding: 50px;
 `;
+
 
 //form
 export const Form = styled.form`
@@ -98,6 +100,17 @@ export const Input = styled.input`
 `;
 
 //Login
+export const LoginBox = styled.div`
+display:flex;
+align-items:center;
+flex-direction:column;
+justify-content:center;
+border:1px solid gray;
+width:400px;
+height:500px;
+margin-top:100px
+`
+
 export const Title = styled.h1`
   font-size: 40px;
   font-weight: 600;
@@ -113,6 +126,7 @@ export const WarningNotice = styled.div`
 `;
 
 export const SignupGuide = styled.div`
+
   margin-top: 20px;
 `;
 
@@ -137,3 +151,4 @@ export const InputSection = styled.section`
   align-items: center;
   flex-direction: column;
 `;
+
