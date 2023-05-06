@@ -13,6 +13,7 @@ const Login = () => {
 
   const onClickLoginHandler = ()=>{
     if(userName.length <1 ){
+
       setWarningNotice('아이디를 입력해주세요')
       console.log('아이디를 입력해주세요.')
       return;
@@ -33,17 +34,18 @@ const Login = () => {
     <CSS.Input value={userName} onChange={onChangeUserNameHandler}/>
     <CSS.Input value={password} onChange={onChangPasswordHandler}/>
     </CSS.Form>
-    {warningNotice}
+    <CSS.WarningNotice>{warningNotice}</CSS.WarningNotice>
     <Button type='positive'
     size='150'
     onClick={onClickLoginHandler}>로그인</Button>
     
 
-    <div>
-    <span>계정이 없으신가요?</span><Link to='/signUp'>
-      <Button type='positive' >회원가입</Button>
+    <CSS.SignupGuide>
+    <span>계정이 없으신가요?</span>
+    <Link to='/signUp'>
+      <Button>회원가입</Button>
       </Link>
-    </div>
+    </CSS.SignupGuide>
     </CSS.Main>
 
 
