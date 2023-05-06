@@ -88,6 +88,8 @@ const MenuBarDropdown = styled.div`
     list-style: none;
     padding: 0;
     margin: 0;
+    position: absolute;
+    top: 200px;
   }
 
   li {
