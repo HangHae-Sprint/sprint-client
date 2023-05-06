@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-
-const MenuBar = ({isActive,toggleMenu}) => {
-
+const MenuBar = ({ isActive, toggleMenu }) => {
   return (
     <MenuBarContainer>
-      <HamburgerButton className="hamburger" onClick={toggleMenu}>
+      <HamburgerButton className="hamburger" zIndex={100} onClick={toggleMenu}>
         <HamburgerLine />
         <HamburgerLine />
         <HamburgerLine />
@@ -14,10 +12,10 @@ const MenuBar = ({isActive,toggleMenu}) => {
       <MenuBarDropdown className={`menu-bar ${isActive ? "active" : ""}`}>
         <ul>
           <li>
-            <a href="#">메뉴1</a>
+            <a href="#">스터디 만들기</a>
           </li>
           <li>
-            <a href="#">메뉴2</a>
+            <a href="#">프로젝트 만들기</a>
           </li>
         </ul>
       </MenuBarDropdown>
@@ -33,9 +31,13 @@ const MenuBarContainer = styled.div`
 
 const HamburgerButton = styled.button`
   display: inline-block;
+  z-index: ${(props) => props.zIndex || "auto"};
   background-color: transparent;
   border: none;
   cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 const HamburgerLine = styled.span`
@@ -47,13 +49,17 @@ const HamburgerLine = styled.span`
 `;
 
 const MenuBarDropdown = styled.div`
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 0;
   left: 0;
-  display: block;
+  width: 200px;
+  height: 100%;
+  background-color: #fff;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 
   &.active {
-    display: block;
+    transform: translateX(0);
   }
 
   ${MenuBarContainer}.active & {

@@ -27,57 +27,58 @@ export const Header = styled.header`
 
 //button
 export const Button = styled.button`
-
-border:none;
-background-color:${(props) => props.type === 'positive' ? '#F0F0F0' : '#F8F4EA'};
-color: ${(props) => props.type === 'positive' ? '#3C486B' : '#243763'};
-padding:10px;
-width:${(props) => `${props.size}px;`};
-font-weight:600;
-&:hover{
-  background-color:${(props) => props.type === 'positive' ? '#579BB1' : '#CE7777'};
-color: ${(props) => props.type === 'positive' ? '#F0F0F0' : '#F8F4EA'};
-transform: scale(1.05);
-cursor: pointer;
-}
-`
+  border: none;
+  background-color: ${(props) =>
+    props.type === "positive" ? "#F0F0F0" : "#F8F4EA"};
+  color: ${(props) => (props.type === "positive" ? "#3C486B" : "#243763")};
+  padding: 10px;
+  width: ${(props) => `${props.size}px;`};
+  font-weight: 600;
+  &:hover {
+    background-color: ${(props) =>
+      props.type === "positive" ? "#579BB1" : "#CE7777"};
+    color: ${(props) => (props.type === "positive" ? "#F0F0F0" : "#F8F4EA")};
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+`;
 
 //Main
 export const Main = styled.main`
-display:flex;
-align-items:center;
-flex-direction:column;
-justify-content:center;
-position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-border: 1px solid gray;
-padding:50px;
-`
+  border: 1px solid gray;
+  padding: 50px;
+`;
 
 //form
 export const Form = styled.form`
-display:flex;
-align-items:center;
-flex-direction:column;
-margin-top:30px;
-margin-bottom:30px;
-`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 30px;
+`;
 
 export const Input = styled.input`
-margin:10px;
-width:250px;
-padding:10px;
-`
+  margin: 10px;
+  width: 250px;
+  padding: 10px;
+`;
 
 //Login
 export const Title = styled.h1`
-font-size:40px;
-font-weight:600;
-`
+  font-size: 40px;
+  font-weight: 600;
+`;
 export const Entire = styled.div`
-position:relative;
+  position: relative;
   border: none;
   background-color: ${(props) =>
     props.type === "positive" ? "#F0F0F0" : "#F8F4EA"};
@@ -87,9 +88,9 @@ position:relative;
   font-weight: 600;
   &:hover {
     background-color: ${(props) =>
-    props.type === "positive" ? "#579BB1" : "#CE7777"};
+      props.type === "positive" ? "#579BB1" : "#CE7777"};
     color: ${(props) => (props.type === "positive" ? "#F0F0F0" : "#F8F4EA")};
     transform: scale(1.05);
     cursor: pointer;
   }
-`
+`;
