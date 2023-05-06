@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Tenada from "../style/fonts/Tenada.ttf";
-import uri from "../style/image/uri.png";
 
 export const HomeTitle = styled.div`
   font-size: 20px;
