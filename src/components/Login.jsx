@@ -32,8 +32,10 @@ const Login = () => {
       <CSS.LoginBox>
     <CSS.Title>로그인</CSS.Title>
     <CSS.Form onSubmit={(e)=>e.preventDefault()}>
-    <CSS.Input value={userName} onChange={onChangeUserNameHandler}/>
-    <CSS.Input value={password} onChange={onChangPasswordHandler}/>
+    <CSS.Input value={userName} onChange={onChangeUserNameHandler}
+    placeholder='USER ID'/>
+    <CSS.Input value={password} onChange={onChangPasswordHandler}
+    placeholder='PASSWORD'/>
     </CSS.Form>
     <CSS.WarningNotice>{warningNotice}</CSS.WarningNotice>
     <Button type='positive'

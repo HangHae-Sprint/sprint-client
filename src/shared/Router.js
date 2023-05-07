@@ -19,6 +19,7 @@ const Router = () => {
         <Route path="main" element={<Main />} />
         <Route path="mySprint" element={<MySprint />} />
         <Route path="main/:id" element={<Detail />} />
+
       </Routes>
     </BrowserRouter>
   );

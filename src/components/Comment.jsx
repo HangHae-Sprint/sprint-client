@@ -1,8 +1,19 @@
 import React from 'react'
 
-const Comment = () => {
+const Comment = (props) => {
+  const data = props.commentList
+
   return (
-    <div>Comment</div>
+    <>
+    {data.map((item)=>{
+      return(
+        <div>
+        <div>{item.commentNickname}</div>
+        <div>{item.commentContent}</div>
+        </div>
+      )
+    })}
+    </>
   )
 }
 
