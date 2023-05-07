@@ -32,9 +32,11 @@ const MenuBar = ({ isActive, toggleMenu }) => {
             </Link>
           </li>
           <li>
-            <Button href="#" onClick={toggleMySprint}>
-              My Sprint ▼
-            </Button>
+            <Link to="/mySprint">
+              <Button onClick={toggleMySprint}>
+                My Sprint {isMySprintOpen ? "▲" : "▼"}
+              </Button>
+            </Link>
             <div style={{ height: "10px" }}></div>
             {isMySprintOpen && (
               <div>
