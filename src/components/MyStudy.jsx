@@ -7,6 +7,7 @@ const MyStudy = () => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
+        //여기 어떻게 고쳐?? 
         const response = await axios.get(
           `${process.env.REACT_APP_SERVER_URL}/api/cards?type=My%20Study`
         );
