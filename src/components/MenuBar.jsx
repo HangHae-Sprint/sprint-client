@@ -3,10 +3,19 @@ import styled from "styled-components";
 import { Button } from "./component/style";
 import { Link } from "react-router-dom";
 
-const MenuBar = ({ isActive, toggleMenu }) => {
+const MenuBar = ({ isActive, toggleMenu, setFilterType }) => {
   const [isMySprintOpen, setIsMySprintOpen] = useState(false);
+
   const toggleMySprint = () => {
     setIsMySprintOpen(!isMySprintOpen);
+  };
+
+  const handleMyProjectClick = () => {
+    setFilterType("My Project");
+  };
+
+  const handleMyStudyClick = () => {
+    setFilterType("My Study");
   };
   return (
     <MenuBarContainer>
@@ -18,10 +27,7 @@ const MenuBar = ({ isActive, toggleMenu }) => {
       <MenuBarDropdown className={`menu-bar ${isActive ? "active" : ""}`}>
         <ul>
           <li>
-            <a href="#">스터디 만들기</a>
-          </li>
-          <li>
-            <a href="#">프로젝트 만들기</a>
+            <a href="#">스터디 / 프로젝트 만들기</a>
           </li>
           <li className="btn-group">
             <Link to="/login">
@@ -32,17 +38,20 @@ const MenuBar = ({ isActive, toggleMenu }) => {
             </Link>
           </li>
           <li>
-            <Link to="/mySprint">
-              <Button onClick={toggleMySprint}>
-                My Sprint {isMySprintOpen ? "▲" : "▼"}
-              </Button>
-            </Link>
+            <Button href="#" onClick={toggleMySprint}>
+              My Sprint {isMySprintOpen ? "▲" : "▼"}
+            </Button>
+
             <div style={{ height: "10px" }}></div>
             {isMySprintOpen && (
               <div>
-                <Button type="negative">My Projects</Button>
+                <Button type="negative" onClick={handleMyProjectClick}>
+                  My Project
+                </Button>
                 <div style={{ height: "10px" }}></div>
-                <Button type="negative">My Study</Button>
+                <Button type="negative" onClick={handleMyStudyClick}>
+                  My Study
+                </Button>
               </div>
             )}
           </li>

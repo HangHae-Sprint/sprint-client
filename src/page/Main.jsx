@@ -1,23 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import ContentBox from "../components/ContentBox";
 
 const Main = () => {
-  // 카드들의 데이터를 불러오는 코드
+  const [filterType, setFilterType] = useState("All");
   const cards = [
-    { id: 1, title: "카드 1", type: "type1" },
-    { id: 2, title: "카드 2", type: "type2" },
-    { id: 3, title: "카드 3", type: "type1" },
-    { id: 4, title: "카드 4", type: "type2" },
-    { id: 5, title: "카드 5", type: "type1" },
-    { id: 6, title: "카드 6", type: "type2" },
-    { id: 7, title: "카드 7", type: "type1" },
+    {
+      id: 1,
+      type: "My Project",
+      imageUrl: "https://via.placeholder.com/300x200.png?text=Project+1",
+      title: "Project 1",
+      description: "This is project 1",
+    },
+    {
+      id: 2,
+      type: "My Study",
+      imageUrl: "https://via.placeholder.com/300x200.png?text=Study+1",
+      title: "Study 1",
+      description: "This is study 1",
+    },
+    {
+      id: 3,
+      type: "My Project",
+      imageUrl: "https://via.placeholder.com/300x200.png?text=Project+2",
+      title: "Project 2",
+      description: "This is project 2",
+    },
+    {
+      id: 4,
+      type: "My Study",
+      imageUrl: "https://via.placeholder.com/300x200.png?text=Study+2",
+      title: "Study 2",
+      description: "This is study 2",
+    },
   ];
+
+  const filteredCards =
+    filterType === "All"
+      ? cards
+      : cards.filter((card) => card.type === filterType);
+
   return (
     <div>
-      <Header />
-      <div>Main</div>
-      <ContentBox cards={cards} />
+      <Header setFilterType={setFilterType} />
+      <div>
+        <ContentBox cards={filteredCards} />
+      </div>
     </div>
   );
 };

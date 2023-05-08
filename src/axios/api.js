@@ -1,25 +1,24 @@
-import axios from "axios"
+import axios from "axios";
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_SERVER_URL
-})
+  baseURL: process.env.REACT_APP_SERVER_URL,
+});
 
 //회원가입 API
 const handleSignUp = async (props) => {
-  console.log(props)
+  console.log(props);
   try {
     const response = await instance.post(`/api/user/register`, {
       username: props.username,
       password: props.password,
       nickname: props.nickname,
-      email: props.email
-    })
-    return response.data
+      email: props.email,
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error("회원가입 실패 ");
   }
-  catch (error) {
-    throw new Error('회원가입 실패 ')
-  }
-}
+};
 
 // //로그인 API
 // const handleLogin = async (props) => {
@@ -50,4 +49,4 @@ const handleSignUp = async (props) => {
 
 //   return response
 // }
-export { handleSignUp }
+export { handleSignUp };

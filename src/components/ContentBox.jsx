@@ -13,8 +13,8 @@ const ContentBox = ({ cards }) => {
     <StContentContainer>
       <StFilterButtons>
         <button onClick={() => setFilteredCards(cards)}>All</button>
-        <button onClick={() => handleFilter("type1")}>Type 1</button>
-        <button onClick={() => handleFilter("type2")}>Type 2</button>
+        <button onClick={() => handleFilter("type1")}>스터디</button>
+        <button onClick={() => handleFilter("type2")}>프로젝트</button>
       </StFilterButtons>
       <StCardList>
         {filteredCards.map((card) => (
@@ -22,7 +22,7 @@ const ContentBox = ({ cards }) => {
             <StCardImage src={card.imageUrl} alt={card.title} />
             <StCardTitle>{card.title}</StCardTitle>
             <StCardDescription>{card.description}</StCardDescription>
-            <StCardButton>Read more</StCardButton>
+            <StCardButton>상세보기</StCardButton>
           </StCard>
         ))}
       </StCardList>
