@@ -6,7 +6,6 @@ const instance = axios.create({
 
 //회원가입 API
 const handleSignUp = async (props) => {
-  console.log(props);
   try {
     const response = await instance.post(`/api/user/register`, {
       username: props.username,

@@ -13,8 +13,8 @@ const ContentBox = ({ cards }) => {
     <StContentContainer>
       <StFilterButtons>
         <button onClick={() => setFilteredCards(cards)}>All</button>
-        <button onClick={() => handleFilter("type1")}>스터디</button>
-        <button onClick={() => handleFilter("type2")}>프로젝트</button>
+        <button onClick={() => handleFilter("My Study")}>스터디</button>
+        <button onClick={() => handleFilter("My Project")}>프로젝트</button>
       </StFilterButtons>
       <StCardList>
         {filteredCards.map((card) => (

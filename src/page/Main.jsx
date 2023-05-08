@@ -33,6 +33,20 @@ const Main = () => {
       title: "Study 2",
       description: "This is study 2",
     },
+    {
+      id: 5,
+      type: "My Study",
+      imageUrl: "https://via.placeholder.com/300x200.png?text=Study+2",
+      title: "Study 2",
+      description: "This is study 2",
+    },
+    {
+      id: 6,
+      type: "My Project",
+      imageUrl: "https://via.placeholder.com/300x200.png?text=Project+2",
+      title: "Project 2",
+      description: "This is project 2",
+    },
   ];
 
   const filteredCards =
