@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Button from './component/Button'
 import useInput from './Hooks/useInput'
 import * as CSS from '../components/component/style'
@@ -35,26 +35,31 @@ const SignUp = () => {
   }
 
   const onClickSingUpHandler= () =>{
-    if(username.length<1){
-      setWarningNotice('아이디를 입력해주세요.')
+    //숫자와 소문자로만 입력 정규표현식 
+    const regex = /^[a-z0-9]+$/;
+    //이메일형식으로 입력 정규표현식
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if(username.length<1 || !regex.test(username)){
+      setWarningNotice('아이디를 영문 소문자 + 숫자로만 입력해주세요.')
       return;
     }
-    if(password.length<1){
-      setWarningNotice('비밀번호를 입력해주세요.')
+    if(password.length<1 || !regex.test(password)){
+      setWarningNotice('비밀번호를 영문 소문자 + 숫자로만 입력해주세요.')
       return;
     }
     if(password !== checkPassword){
       setWarningNotice('비밀번호가 일치하지 않습니다.')
       return;
     }
-    if(nickname.length<1){
-      setWarningNotice('닉네임을 입력해주세요.')
+    if(nickname.length<1 || !regex.test(username)){
+      setWarningNotice('닉네임을 영문 소문자 + 숫자로만 입력해주세요.')
       return;
     }
-    if(email.length<1){
-      setWarningNotice('이메일을 입력해주세요.')
+    if(email.length<1 || !emailRegex.test(email)){
+      setWarningNotice('올바른 이메일 주소를 입력해주세요.')
       return;
     }
+    setWarningNotice('')
     mutation.mutate(newSignUpPost)
   } 
   return (

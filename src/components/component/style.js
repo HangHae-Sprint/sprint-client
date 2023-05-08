@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Tenada from "../style/fonts/Tenada.ttf";
-import uri from "../style/image/uri.png"
+import heart from "../style/image/heart.png"
+import beanHeart from "../style/image/beanHeart.png"
 
 export const HomeTitle = styled.div`
   font-size: 20px;
@@ -44,6 +45,7 @@ background-color :${(props) => {
 color: ${(props) => props.type === 'positive' ? '#3C486B' : '#243763'};
 padding:10px;
 width:${(props) => `${props.size}px;`};
+
 font-weight:600;
 &:hover{
   background-color :${(props) => {
@@ -77,6 +79,7 @@ display:flex;
 align-items:center;
 flex-direction:column;
 justify-content:center;
+
 `
 
 //form
@@ -196,6 +199,7 @@ background-color:transparent;
 border:1px solid gray;
 border-radius:8px;
 white-space:pre-line;
+resize: none;
 &:focus{
   outline:none;
   border:1px solid gray;
@@ -237,15 +241,21 @@ font-size:15px;
 `
 //detail
 export const DetailButtonBox = styled.div`
-width:170px;
 display:flex;
-gap:10px;
+gap:20px;
 `
+export const DetailSection = styled.section`
+display:flex;
+flex-direction:row;
+`
+
 export const CommentInput = styled.textarea`
 background-color:transparent;
 border:none;
 border-bottom:1px solid gray;
 white-space:pre-line;
+resize: none;
+
 &:focus{
   outline:none;
 }
@@ -258,11 +268,11 @@ gap:20px;
 margin:20px;
 `
 export const DetailTitle = styled.h1`
-width:800px;
+width:600px;
 padding:20px;
 margin-bottom:10px;
 margin-top:20px;
-font-size:25px;
+font-size:27px;
 border-bottom:1px solid gray;
 
 `
@@ -273,7 +283,7 @@ padding:20px;
 margin-bottom:20px;
 margin-top:10px;
 border-bottom:1px solid gray;
-
+font-size:19px;
 `
 //SupportStatus
 export const Article = styled.article`
@@ -287,4 +297,75 @@ export const Section = styled.section`
 display:flex;
 flex-direction:row;
 gap:10px;
+`
+export const ApplyButtonBox = styled.div`
+display:flex;
+align-items:center;
+`
+
+export const BeanHeart = styled.button`
+background-image:url(${beanHeart});
+width:35px;
+height:35px;
+background-size:cover;
+background-color:transparent;
+border:none;
+cursor: pointer;
+&:hover{
+  transform: scale(1.1);
+}
+margin-left:20px;
+`
+export const Heart = styled.button`
+background-image:url(${heart});
+width:35px;
+height:35px;
+background-size:cover;
+background-color:transparent;
+border:none;
+cursor: pointer;
+margin-left:20px;
+&:hover{
+  transform: scale(1.1);
+}
+`
+export const Like = styled.div`
+display:flex;
+align-items:center;
+`
+export const DetailLike = styled.div`
+display:flex;
+justify-content:space-between;
+width:150px;
+`
+export const DetailEdit = styled.div`
+display:flex;
+justify-content:space-between;
+margin-bottom:30px;
+`
+
+//Comment
+export const CommentTitle = styled.h1`
+width:800px;
+padding-bottom:10px;
+font-size:18px;
+`
+export const CommentContent = styled.div`
+width:800px;
+padding-bottom:10px;
+border-bottom:1px solid gray;
+color:#333333;
+`
+export const CommentBox = styled.div`
+padding-bottom:20px;
+`
+export const CommentSection = styled.section`
+margin:20px;
+margin-top:30px;
+`
+//DetailModify
+export const DetailModifyButtonBox = styled.div`
+display:flex;
+gap:20px;
+justify-content:flex-end;
 `

@@ -1,27 +1,46 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from './component/Button'
 import Header from './Header'
 import useInput from './Hooks/useInput'
 import * as CSS from '../components/component/style'
+import { useMutation } from 'react-query'
+import { handleLogin } from '../axios/api'
 
 const Login = () => {
-  const [userName, onChangeUserNameHandler ] = useInput('')
+  const [username, onChangeUsernameHandler ] = useInput('')
   const [password, onChangPasswordHandler] = useInput('')
-
   const [warningNotice, setWarningNotice] = useState('')
+  const navigate = useNavigate()
+
+  const mutation = useMutation(handleLogin,{
+    onSuccess: () =>{
+      alert('회원가입 성공')
+      navigate('/home')
+    },
+    onError:(error)=>{
+      // alert(error.message)
+      alert('로그인 실패')
+    }
+})
+  const newLoginPost = {
+    username,
+    password,
+
+  }
 
   const onClickLoginHandler = (e)=>{
-    if(userName.length <1 ){
-
-      setWarningNotice('아이디를 입력해주세요')
+    const regex = /^[a-z0-9]+$/;
+    if(username.length<1 || !regex.test(username)){
+      setWarningNotice('아이디를 영문 소문자 + 숫자로만 입력해주세요.')
       return;
     }
-    if(password.length <1 ){
-      setWarningNotice('비밀번호를 입력해주세요')
+    if(password.length<1 || !regex.test(password)){
+      setWarningNotice('비밀번호를 영문 소문자 + 숫자로만 입력해주세요.')
       return;
     }
-
+    setWarningNotice('')
+    mutation.mutate(newLoginPost)
 
   }
   return (
@@ -32,7 +51,7 @@ const Login = () => {
       <CSS.LoginBox>
     <CSS.Title>로그인</CSS.Title>
     <CSS.Form onSubmit={(e)=>e.preventDefault()}>
-    <CSS.Input value={userName} onChange={onChangeUserNameHandler}
+    <CSS.Input value={username} onChange={onChangeUsernameHandler}
     placeholder='USER ID'/>
     <CSS.Input value={password} onChange={onChangPasswordHandler}
     placeholder='PASSWORD'/>

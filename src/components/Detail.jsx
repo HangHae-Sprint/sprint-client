@@ -7,6 +7,7 @@ import SupportStatus from './SupportStatus'
 import useInput from './Hooks/useInput'
 import { useState } from 'react'
 import DetailModify from './DetailModify'
+import { Link } from 'react-router-dom'
 
 
 const dummyData = 
@@ -24,21 +25,30 @@ const dummyData =
       modifiedAt : 'LocalDateTime',
       sprintType : 'Project',
       commentList : [
-        {
-          commentNickname:'uri',
-          commentContent:'멋지다.'
-        },
-        {
-          commentNickname:'uri1',
-          commentContent:'멋지다.1'
-        },
-        {
-          commentNickname:'uri2',
-          commentContent:'멋지다.2'
-        },        {
-          commentNickname:'uri3',
-          commentContent:'멋지다.3'
-        }
+        { 
+          id: 4, 
+          username: 'username12',
+          nickname: 'nickname', 
+          comment: '프론트 실력은 어느정도여야 가능한가요?', 
+          createdAt: '2022-12-          15T13:42:06.690346 ',
+          modifiedAt: '2022-12-15T13:42:06.690346', 
+            sprintType : 'Study',
+            numLikes : 10,
+            isLiked : true,
+            isMyComment : true,
+        }, 
+        { 
+          id: 3, 
+          username: 'username12',
+          nickname: 'nickname', 
+          comment: '모집은 언제까지 하시나요?', 
+          createdAt: '2022-12-          15T13:42:06.690346', 
+          modifiedAt: '2022-12-15T13:42:06.690346', 
+            sprintType : 'Study',
+            numLikes : 10,
+            isLiked : true,
+            isMyComment : true
+        }, 
       ],
       fieldObjectList : [
         {
@@ -64,32 +74,54 @@ const dummyData =
 const Detail = () => {
   const [comment,onChangeCommentHandler] =useInput('')
   const [modify,setModify] = useState(false)
-
+  const [Liked,setLiked]= useState(true)
 
   const onClickModifyHandler = () => {
     setModify(!modify)
   }
-  
+  const isLikeHandler = ()=>{
+    setLiked(!Liked)
+  }
   return (
     <>
     <Header/>
     <CSS.Main>
-      {!modify && <section>
-      <CSS.DetailTitle>{dummyData.title}<SupportStatus 
-    nickname={dummyData.nickname}
-    fieldObjectList={dummyData.fieldObjectList}/></ CSS.DetailTitle>
-    
-      <CSS.DetailContent>{dummyData.content}</CSS.DetailContent>
-      <CSS.DetailButtonBox>
-        <Button size='80' type={'positive'}
-        onClick={onClickModifyHandler}>수정</Button>
-        <Button size='80' type={'negative'}>삭제</Button>
-      </CSS.DetailButtonBox>
-      </section>}
+      {!modify && 
+      <article>
+        <CSS.DetailSection>
+        <CSS.DetailTitle>
+          {dummyData.title}
+        <SupportStatus 
+          nickname={dummyData.nickname}
+          fieldObjectList={dummyData.fieldObjectList}/>
+        </ CSS.DetailTitle>
+        <CSS.ApplyButtonBox>
+        <Button size='180' type='positive'>신청하기</Button>
+        </CSS.ApplyButtonBox>
+        </CSS.DetailSection>
+
+        <CSS.DetailContent>{dummyData.content}</CSS.DetailContent>
+        <CSS.DetailEdit>
+          <CSS.DetailLike>
+          {Liked ? 
+          <CSS.Heart onClick={isLikeHandler}/>:<CSS.BeanHeart onClick={isLikeHandler}/>} 
+
+          <CSS.Like>좋아요 {dummyData.numLikes} 개</CSS.Like>
+          </CSS.DetailLike>
+
+          <CSS.DetailButtonBox>
+            <Button size='80' type={'positive'}
+            onClick={onClickModifyHandler}>수정</Button>
+            <Button size='80' type={'negative'}>삭제</Button>
+          </CSS.DetailButtonBox>
+        </CSS.DetailEdit>
+      </article>}
       {modify && <DetailModify modify={modify}
       setModify={setModify}/>}
         <section>
+
       <CSS.CommentForm onSubmit={(e)=>e.preventDefault()}>
+        
         <CSS.CommentInput 
         value={comment}
         onChange={onChangeCommentHandler}

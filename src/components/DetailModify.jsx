@@ -18,12 +18,12 @@ const DetailModify = (props) => {
       <CSS.EditorInput/>
       <CSS.EditorTextarea/>
       </CSS.Form>
-      <CSS.DetailButtonBox>
+      <CSS.DetailModifyButtonBox>
         <Button size='80' type={'positive'}
         onClick={onClickModifyHandler}>저장</Button>
         <Button size='80' type={'negative'}
         onClick={onClickCancelHandler}>취소</Button>
-      </CSS.DetailButtonBox>
+      </CSS.DetailModifyButtonBox>
     </section>
       </>
   )

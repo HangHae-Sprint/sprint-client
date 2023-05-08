@@ -6,10 +6,12 @@ const SupportStatus = (props) => {
   return (
     <CSS.Article>
     <div>작성자 : {props.nickname}</div>
+    <div>지원현황 :</div>
     {props.fieldObjectList.map((item)=>{
       return(
         <CSS.Section key={item.fieldName}>
-          <div>지원현황 : {item.fieldName}</div>
+
+          <div> {item.fieldName}</div>
           <div>{item.fieldMemberCount} / {item.fieldMaxNum}</div>
         </CSS.Section>
       )

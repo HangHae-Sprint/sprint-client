@@ -1,18 +1,22 @@
 import React from 'react'
+import * as CSS from '../components/component/style'
+
 
 const Comment = (props) => {
   const data = props.commentList
 
   return (
     <>
+    <CSS.CommentSection>
     {data.map((item)=>{
       return(
-        <div>
-        <div>{item.commentNickname}</div>
-        <div>{item.commentContent}</div>
-        </div>
+        <CSS.CommentBox key={item.id}>
+        <CSS.CommentTitle>{item.nickname} | {item.createdAt}</CSS.CommentTitle>
+        <CSS.CommentContent>{item.comment}</CSS.CommentContent>
+        </CSS.CommentBox>
       )
     })}
+    </CSS.CommentSection>
     </>
   )
 }
