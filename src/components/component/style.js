@@ -418,3 +418,84 @@ export const PositionBox = styled.div`
   font-size: 20px;
   margin-left: 20px;
 `;
+
+//List(myStudy,MyProject,AllSprintList)
+export const CardListsMain = styled.main`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 1300px;
+`;
+
+export const SprintBox = styled.article`
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  width: 320px;
+  height: 220px;
+`;
+
+export const CardTitle = styled.h2`
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0;
+  padding: 16px;
+`;
+
+export const CardContent = styled.div`
+  border-top: 1px solid #f0f0f0;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+`;
+
+export const CardField = styled.div`
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 8px;
+`;
+
+export const recruitment = styled.div`
+  font-weight: bold;
+  margin-bottom: 4px;
+`;
+
+export const CardFieldContent = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+// export const CardFieldBar = styled.div`
+//   background-color: #f0f0f0;
+//   border-radius: 4px;
+//   height: 4px;
+//   margin-left: 8px;
+//   margin-right: 4px;
+//   overflow: hidden;
+// `;
+
+// export const CardFieldBarFill = styled.div`
+//   background-color: #0070f3;
+//   border-radius: 4px;
+//   height: 4px;
+//   width: ${(props) =>
+//     props.fill ? `${(props.fill / props.max) * 100}%` : "0"};
+// `;
+export const background = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+export const buttonBoxHandler = styled.div`
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+`;
+export const contentBox = styled.div`
+  display: flex;
+  position: relative;
+  &:hover {
+    transform: scale(1.05);
+  }
+`;

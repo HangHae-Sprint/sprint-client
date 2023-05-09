@@ -6,6 +6,9 @@ import { useQuery } from "react-query";
 import { allSprint } from "../axios/api";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import * as CSS from "../components/component/style";
+import SupportStatus from "./SupportStatus";
+import IsLike from "./IsLike";
 
 const AllSprintList = () => {
   const navigate = useNavigate();
@@ -28,101 +31,44 @@ const AllSprintList = () => {
   };
 
   return (
-    <>
-      <StCardLists>
+    <CSS.background>
+      <CSS.CardListsMain>
         {data.map((item) => (
-          <StCards key={item.sprintId}>
-            <StCardTitles>{item.title}</StCardTitles>
-            <StCardContent>
-              <div>{` ${item.nickname}`}</div>
-              <div>{` ${item.sprintType}`}</div>
-              <div>{` ${item.numLikes}`}</div>
-              <StCardField>
-                <StCardFieldTitle>모집인원:</StCardFieldTitle>
-                {item.fieldObjectList.map((field) => (
-                  <StCardFieldContent key={field.fieldName}>
-                    <div>{`${field.fieldName}: `}</div>
-                    <div>{`${field.nowMemberCount}/${field.fieldMaxNum}`}</div>
+          <CSS.contentBox>
+            <CSS.SprintBox key={item.sprintId}>
+              <CSS.CardTitle> {item.title}</CSS.CardTitle>
 
-                    <StCardFieldBar>
-                      <StCardFieldBarFill
-                        fill={field.nowMemberCount}
-                        max={field.fieldMaxNum}
-                      />
-                    </StCardFieldBar>
-                  </StCardFieldContent>
-                ))}
-              </StCardField>
-            </StCardContent>
-
-            <Button onClick={() => detailOpen(item.sprintId)} type="positive">
-              more
-            </Button>
-
-            {/* </Link> */}
-          </StCards>
+              <CSS.CardContent>
+                <div>
+                  <div>{` 작성자 : ${item.nickname}`}</div>
+                  <div>{` 모집 타입 :  ${item.sprintType}`}</div>
+                  <div>{`좋아요 ${item.numLikes} 개`}</div>
+                </div>
+                <CSS.CardField>
+                  <CSS.recruitment>모집인원 : </CSS.recruitment>
+                  {item.fieldObjectList.map((field) => (
+                    <CSS.CardFieldContent key={field.fieldName}>
+                      <div>{`${field.fieldName} : `}</div>
+                      <div>{` ${field.nowMemberCount} / ${field.fieldMaxNum}`}</div>
+                    </CSS.CardFieldContent>
+                  ))}
+                </CSS.CardField>
+              </CSS.CardContent>
+              <CSS.buttonBoxHandler>
+                <Button
+                  onClick={() => detailOpen(item.sprintId)}
+                  type="positive"
+                >
+                  more
+                </Button>
+                <IsLike isLike={item} />
+              </CSS.buttonBoxHandler>
+            </CSS.SprintBox>
+          </CSS.contentBox>
         ))}
-      </StCardLists>
-    </>
+      </CSS.CardListsMain>
+    </CSS.background>
   );
 };
 
 export default AllSprintList;
-const StCardLists = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
-
-const StCards = styled.div`
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  margin: 16px;
-  width: 320px;
-`;
-
-const StCardTitles = styled.h2`
-  font-size: 30px;
-  font-weight: bold;
-  margin: 0;
-  padding: 16px;
-`;
-
-const StCardContent = styled.div`
-  border-top: 1px solid #f0f0f0;
-  padding: 16px;
-`;
-
-const StCardField = styled.div`
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 8px;
-`;
-
-const StCardFieldTitle = styled.div`
-  font-weight: bold;
-  margin-bottom: 4px;
-`;
-
-const StCardFieldContent = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const StCardFieldBar = styled.div`
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  height: 4px;
-  margin-left: 8px;
-  margin-right: 4px;
-  overflow: hidden;
-`;
-
-const StCardFieldBarFill = styled.div`
-  background-color: #0070f3;
-  border-radius: 4px;
-  height: 4px;
-  width: ${(props) =>
-    props.fill ? `${(props.fill / props.max) * 100}%` : "0"};
-`;

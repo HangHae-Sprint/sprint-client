@@ -4,6 +4,7 @@ import { isLikePost } from "../axios/api";
 import * as CSS from "../components/component/style";
 
 const IsLike = (props) => {
+  console.log(`props:`,props.data)
   const [Liked, setLiked] = useState(props.isLiked);
 
   const mutation = useMutation(isLikePost, {

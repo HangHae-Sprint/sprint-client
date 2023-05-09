@@ -99,6 +99,7 @@ const Detail = () => {
               등록
             </Button>
           </CSS.CommentForm>
+
           <Comment commentList={data.commentList} />
         </section>
       </CSS.Main>
