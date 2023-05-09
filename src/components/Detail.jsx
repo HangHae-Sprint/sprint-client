@@ -9,74 +9,27 @@ import { useState } from 'react'
 import DetailModify from './DetailModify'
 import { Link } from 'react-router-dom'
 import IsLike from './IsLike'
+import { useQuery } from 'react-query'
+import { detailSprint } from '../axios/api'
+import ApplyModal from './ApplyModal'
 
 
-const dummyData = 
-    {
-      sprintId : 10,
-      title : '프론트엔드 면접질문 발표 스터디원 모집',
-      nickname : 'stella',   
-      content : `프론트엔드 면접 준비를 같이할 스터디원을 모집합니다.
-      특별한 지식이 없어도 참여 가능하며, 일주일에 한번 진행할 예정입니다. 
-      주제는 자율로 선정해서 발표하는 형식으로 진행되며, 궁금한 사항은 댓글 달아주시면 
-      답변드릴 수 있도록 하겠습니다.`,
-      numLikes : 10,
-      isLiked : false,
-      createdAt : 'LocalDateTime',
-      modifiedAt : 'LocalDateTime',
-      sprintType : 'Project',
-      commentList : [
-        { 
-          id: 4, 
-          username: 'username12',
-          nickname: 'nickname', 
-          comment: '프론트 실력은 어느정도여야 가능한가요?', 
-          createdAt: '2022-12-          15T13:42:06.690346 ',
-          modifiedAt: '2022-12-15T13:42:06.690346', 
-            sprintType : 'Study',
-            numLikes : 10,
-            isLiked : true,
-            isMyComment : true,
-        }, 
-        { 
-          id: 3, 
-          username: 'username12',
-          nickname: 'nickname', 
-          comment: '모집은 언제까지 하시나요?', 
-          createdAt: '2022-12-          15T13:42:06.690346', 
-          modifiedAt: '2022-12-15T13:42:06.690346', 
-            sprintType : 'Study',
-            numLikes : 10,
-            isLiked : true,
-            isMyComment : true
-        }, 
-      ],
-      fieldObjectList : [
-        {
-      fieldName : 'frontend',
-      fieldMemberCount : 3,
-      fieldMaxNum : 5
-          },
-        {
-      fieldName : 'backend',
-      fieldMemberCount : 2,
-      fieldMaxNum : 3
-          },
-      {
-        fieldName : 'design',
-        fieldMemberCount : 1,
-        fieldMaxNum : 3
-        },
-      ], 
-    isMySprint : true
-  }
+
 
 
 const Detail = () => {
+  
   const [comment,onChangeCommentHandler] =useInput('')
   const [modify,setModify] = useState(false)
-  // const [Liked,setLiked]= useState(true)
+  const [apply,setApply]= useState(false)
 
+  const applyButtonHandler = () => {
+    setApply(!apply)
+  }
+  const {isLoading, isError, data} = useQuery('detailSprint',()=>detailSprint(1))
+  console.log(data)
+  if(isLoading) return <div>Loading...</div>
+  if(isError) return <div>Error: {Error.message}</div>
   const onClickModifyHandler = () => {
     setModify(!modify)
   }
@@ -91,34 +44,35 @@ const Detail = () => {
       <article>
         <CSS.DetailSection>
         <CSS.DetailTitle>
-          {dummyData.title}
+          {data.title}
         <SupportStatus 
-          nickname={dummyData.nickname}
-          fieldObjectList={dummyData.fieldObjectList}/>
+          nickname={data.nickname}
+          fieldObjectList={data.fieldObjectList}/>
         </ CSS.DetailTitle>
         <CSS.ApplyButtonBox>
-        <Button size='180' type='positive'>신청하기</Button>
+        <Button size='180' type='positive' onClick={applyButtonHandler}>신청하기</Button>
+        {apply && <ApplyModal apply={apply} setApply={setApply}/>}
         </CSS.ApplyButtonBox>
         </CSS.DetailSection>
 
-        <CSS.DetailContent>{dummyData.content}</CSS.DetailContent>
+        <CSS.DetailContent>{data.content}</CSS.DetailContent>
         <CSS.DetailEdit>
           <CSS.DetailLike>
           {/* {Liked ? 
           <CSS.Heart onClick={isLikeHandler}/>:<CSS.BeanHeart onClick={isLikeHandler}/>}  */}
-        <IsLike/>
+        <IsLike data={data}/>
 
-          <CSS.Like>좋아요 {dummyData.numLikes} 개</CSS.Like>
+          <CSS.Like>좋아요 {data.numLikes} 개</CSS.Like>
           </CSS.DetailLike>
 
-          <CSS.DetailButtonBox>
+          {data.isMySprint && <CSS.DetailButtonBox>
             <Button size='80' type={'positive'}
             onClick={onClickModifyHandler}>수정</Button>
             <Button size='80' type={'negative'}>삭제</Button>
-          </CSS.DetailButtonBox>
+          </CSS.DetailButtonBox>}
         </CSS.DetailEdit>
       </article>}
-      {modify && <DetailModify modify={modify}
+      {modify && <DetailModify data={data} modify={modify}
       setModify={setModify}/>}
         <section>
 
@@ -130,7 +84,8 @@ const Detail = () => {
         placeholder='댓글을 입력해주세요.'/>
         <Button size='80' type='positive'>등록</Button>
       </CSS.CommentForm >
-      <Comment commentList={dummyData.commentList}/>
+      {/* todo: API응답에 commentList못가져옴  */}
+      {/* <Comment commentList={data.commentList}/> */}
       </section>
     </CSS.Main>
     </>

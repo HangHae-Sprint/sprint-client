@@ -39,7 +39,7 @@ const SignUp = () => {
     const regex = /^[a-z0-9]+$/;
     //이메일형식으로 입력 정규표현식
     const emailRegex = /^\S+@\S+\.\S+$/;
-    if(username.length<1 || !regex.test(username)){
+    if(username.length<2 || !regex.test(username)){
       setWarningNotice('아이디를 영문 소문자 + 숫자로만 입력해주세요.')
       return;
     }

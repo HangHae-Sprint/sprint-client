@@ -9,17 +9,6 @@ import { useSelector } from "react-redux";
 const Main = () => {
   const sprintType = useSelector((state) => state.sprint.sprintList);
   console.log("sprintType:", sprintType);
-  // const [myStudy, setMyStudy] = useState(false);
-  // const [myProject, setMyProject] = useState(false);
-
-  // const filteredCards =
-  //   filterType === "All"
-  //     ? cards
-  //     : cards.filter((card) => card.type === filterType);
-  // const myProject = useSelector((state)=>{
-  //   setSprintType(state.sprint.sprintList)
-
-  // })
 
   return (
     <div>

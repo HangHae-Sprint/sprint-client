@@ -3,28 +3,63 @@ import Header from './Header'
 import * as CSS from './component/style'
 import useInput from './Hooks/useInput'
 import Button from './component/Button'
+import { useMutation, useQueryClient } from 'react-query'
+import { addSprint } from '../axios/api'
 
 
 const Editor = () => {
-  const [frontend,onChangeFrontendHandler]=useInput('')
-  const [backend,onChangeBackendHandler]=useInput('')
-  const [manager,onChangeManagerHandler]=useInput('')
-  const [design,onChangeDesignHandler]=useInput('')
+  const [frontend,onChangeFrontendHandler]=useInput(0)
+  const [backend,onChangeBackendHandler]=useInput(0)
+  const [manager,onChangeManagerHandler]=useInput(0)
+  const [design,onChangeDesignHandler]=useInput(0)
+
+
   const [title,onChangeTitleHandler]=useInput('')
   const [content,onChangeContentHandler]=useInput('')
 
-  const [isCheckedProject,setIsCheckedProject]=useState(false)
-  const [isCheckedStudy,setIsCheckedStudy]=useState(true)
   const [warningNotice, setWarningNotice] = useState('')
-  const handleStudyCheckboxChange = () =>{
-      setIsCheckedStudy(!isCheckedStudy)
-      setIsCheckedProject(!isCheckedProject)
+  const [sprintType, setSprintType] = useState('Study');
+
+  const mutation =useMutation(addSprint,{
+    onSuccess: ()=>{
+      // queryClient.invalidateQueries("getBoards")
+      alert('작성 저장 성공')
+    }
+  })
+
+  const fieldName = ['backend', 'frontend', 'manager', 'design']
+  const fieldMaxNum = [backend,frontend,manager,design]
+  const fieldInfoList =[]
+  for(let i = 0; i <4; i++){
+    if(fieldMaxNum[i] !== '' && fieldMaxNum[i] !== 0){
+    fieldInfoList.push({fieldName:fieldName[i],fieldMaxNum:fieldMaxNum[i]})
+  }}
+
+  const newSprint={
+    title,
+    content,
+    sprintType,
+    fieldInfoList
   }
 
-  const handleProjectCheckboxChange = () =>{
-      setIsCheckedProject(!isCheckedProject)
-      setIsCheckedStudy(!isCheckedStudy)
+
+
+const handleStudyCheckboxChange = (event) => {
+  if (event.target.checked) {
+    setSprintType('Study');
+  } else {
+    setSprintType('Project');
   }
+};
+
+const handleProjectCheckboxChange = (event) => {
+  if (event.target.checked) {
+    setSprintType('Project');
+  } else {
+    setSprintType('Study');
+  }
+};
+
   const onClickSavePosting = ()=>{
     if(title.length<1){
       setWarningNotice('제목을 입력해주세요.')
@@ -38,6 +73,7 @@ const Editor = () => {
       setWarningNotice('최대인원을 한명이라도 적어주세요.')
       return;
     }
+    mutation.mutate(newSprint)
   }
   return (
     <>
@@ -55,18 +91,22 @@ const Editor = () => {
       <CSS.SelectionType>
         <h3>모집 종류</h3>
         <CSS.CheckBox>
-        <div><input
-        value='Study'
-        type="checkbox"
-        checked={isCheckedStudy}
-        onChange={handleStudyCheckboxChange}
-        />Study</div>
-        <div><input 
-        value='Project'
-        type="checkbox"
-        checked={isCheckedProject}
-        onChange={handleProjectCheckboxChange}
-        />Project</div>
+        <div>
+    <input
+      value='Study'
+      type="checkbox"
+      checked={sprintType === 'Study'}
+      onChange={handleStudyCheckboxChange}
+    />
+    Study
+    <input
+      value='Project'
+      type="checkbox"
+      checked={sprintType === 'Project'}
+      onChange={handleProjectCheckboxChange}
+    />
+    Project
+  </div>
         </CSS.CheckBox>
       </CSS.SelectionType>
       모집 인원

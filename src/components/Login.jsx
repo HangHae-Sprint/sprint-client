@@ -6,21 +6,24 @@ import useInput from './Hooks/useInput'
 import * as CSS from '../components/component/style'
 import { useMutation } from 'react-query'
 import { handleLogin } from '../axios/api'
+import Cookies from 'js-cookie'
 
 const Login = () => {
   const [username, onChangeUsernameHandler ] = useInput('')
   const [password, onChangPasswordHandler] = useInput('')
   const [warningNotice, setWarningNotice] = useState('')
   const navigate = useNavigate()
+  const expiresInSeconds = new Date(new Date().getTime()+ 60*60*1000)
 
   const mutation = useMutation(handleLogin,{
-    onSuccess: () =>{
-      alert('회원가입 성공')
-      navigate('/home')
+    onSuccess: (data) =>{
+      alert('로그인 성공')
+      navigate('/')
+      Cookies.set('token',data,{expires:expiresInSeconds})
     },
     onError:(error)=>{
       // alert(error.message)
-      alert('로그인 실패')
+      alert(error)
     }
 })
   const newLoginPost = {

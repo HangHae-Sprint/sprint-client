@@ -369,3 +369,56 @@ display:flex;
 gap:20px;
 justify-content:flex-end;
 `
+
+//modal
+export const ModalOverlay = styled.div`
+width:100vw;
+height:100vh;
+top:0;
+left:0;
+right:0;
+bottom:0;
+position:fixed;
+background-color:rgba(49,49,49,0.8);
+z-index:10;
+`
+export const ModalContent = styled.div`
+position:relative;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background-color: #FEFBE9;
+padding: 14px;
+border-radius:10px;
+max-width:600px;
+min-width:300px;
+height:300px;
+width:500px;
+z-index:9;
+`
+export const ModalButton = styled.div`
+position:absolute;
+bottom:14%;
+left:12rem;
+display:flex;
+gap:20px;
+`
+export const Content = styled.form`
+padding:20px;
+display:flex;
+flex-direction:column;
+font-size:13px;
+color:gray;
+margin-top:30px;
+`
+export const ModalInput = styled.input`
+margin:20px;
+width:400px;
+padding:10px;
+background-color:transparent;
+border:none;
+border-bottom:1px solid gray;
+&:focus{
+  outline:none;
+}
+`

@@ -12,7 +12,7 @@ const SupportStatus = (props) => {
         <CSS.Section key={item.fieldName}>
 
           <div> {item.fieldName}</div>
-          <div>{item.fieldMemberCount} / {item.fieldMaxNum}</div>
+          <div>{item.nowMemberCount} / {item.fieldMaxNum}</div>
         </CSS.Section>
       )
     })}

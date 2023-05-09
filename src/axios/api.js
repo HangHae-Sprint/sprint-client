@@ -1,8 +1,22 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
+
+// const instance = axios.create({
+//   baseURL: process.env.REACT_APP_SERVER_URL,
+// });
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_SERVER_URL,
+  baseURL: process.env.REACT_APP_TEST_SERVER_URL,
 });
+
+const jwtInstance = axios.create({
+  baseURL: process.env.REACT_APP_TEST_SERVER_URL,
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": Cookies.get("token"),
+  },
+}
+);
 
 //회원가입 API
 const handleSignUp = async (props) => {
@@ -15,7 +29,8 @@ const handleSignUp = async (props) => {
     });
     return response.data;
   } catch (error) {
-    throw new Error("회원가입 실패 ");
+    //todo: 서버에서 예외처리 하면 추후 변경
+    throw new Error('회원가입이 실패했습니다.');
   }
 };
 
@@ -26,25 +41,44 @@ const handleLogin = async (props) => {
       username: props.username,
       password: props.password,
     })
-    return response.data
+    // return response.data
+    console.log(response)
+    const jwtToken = response.headers.get('Authorization');
+    // const token = TokenExtractor(jwtToken)
+    return jwtToken;
   }
   catch (error) {
     throw new Error(error.message)
   }
 }
 
-// //인가 API
-// const getLoginData = async () => {
-//   const accessToken = Cookies.get('token');
-//   const response = await instance.get(`/user`, {
-//     headers: {
-//       "Content-Type": "application/json",
-//       authorization: `Bearer ${accessToken}`,
-//     }
-//   })
+//sprint 추가 
+const addSprint = async (newSprint) => {
+  await jwtInstance.post('/api/sprint', newSprint)
+}
 
-//   return response
-// }
+//sprint 상세조회
+const detailSprint = async (props) => {
+  try {
+    const response = await jwtInstance.get(`/api/sprint/${props}`)
+    return response.data
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}
 
-export { handleSignUp, handleLogin }
+//sprint 수정
+const detailModify = async (props) => {
+  await jwtInstance.put(`/api/sprint/${props.id}`, {
+    title: props.title,
+    content: props.content
+  })
+}
+
+//sprint 좋아요
+const isLikePost = async (props) => {
+  await jwtInstance.post(`/api/like/${props}`)
+}
+
+export { handleSignUp, handleLogin, addSprint, detailSprint, detailModify, isLikePost }
 
