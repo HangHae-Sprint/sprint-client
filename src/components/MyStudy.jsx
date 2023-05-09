@@ -23,12 +23,12 @@ const MyStudy = () => {
       sprintType: "Project",
       fieldObjectList: [
         {
-          fieldName: "frontend",
+          fieldName: "FE",
           fieldMemberCount: 3,
           fieldMaxNum: 5,
         },
         {
-          fieldName: "backend",
+          fieldName: "BE",
           fieldMemberCount: 2,
           fieldMaxNum: 3,
         },
@@ -45,14 +45,14 @@ const MyStudy = () => {
       sprintType: "Project",
       fieldObjectList: [
         {
-          fieldName: "frontend",
+          fieldName: "FE",
           fieldMemberCount: 3,
           fieldMaxNum: 5,
         },
         {
-          fieldName: "backend",
+          fieldName: "BE",
           fieldMemberCount: 2,
-          fieldMaxNum: 3,
+          fieldMaxNum: 4,
         },
       ],
     },

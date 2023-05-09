@@ -77,15 +77,7 @@ const AllSprintList = () => {
                   <StCardFieldContent key={field.fieldName}>
                     <div>{`${field.fieldName}: `}</div>
                     <div>{`${field.fieldMemberCount}/${field.fieldMaxNum}`}</div>
-                    {/* <div>
-                      <>
-                        {Liked ? (
-                          <CSS.Heart onClick={isLikeHandler} />
-                        ) : (
-                          <CSS.BeanHeart onClick={isLikeHandler} />
-                        )}
-                      </>
-                    </div> */}
+
                     <StCardFieldBar>
                       <StCardFieldBarFill
                         fill={field.fieldMemberCount}
