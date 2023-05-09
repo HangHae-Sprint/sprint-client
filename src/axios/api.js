@@ -2,21 +2,20 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 
-// const instance = axios.create({
-//   baseURL: process.env.REACT_APP_SERVER_URL,
-// });
+
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_TEST_SERVER_URL,
+  baseURL: process.env.REACT_APP_SERVER_URL,
 });
 
 const jwtInstance = axios.create({
-  baseURL: process.env.REACT_APP_TEST_SERVER_URL,
+  baseURL: process.env.REACT_APP_SERVER_URL,
   headers: {
     "Content-Type": "application/json",
     "Authorization": Cookies.get("token"),
   },
 }
 );
+
 
 //회원가입 API
 const handleSignUp = async (props) => {

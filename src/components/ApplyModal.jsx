@@ -13,7 +13,6 @@ const ApplyModal = ({setApply,apply}) => {
         <CSS.ModalOverlay>
       <CSS.ModalContent>
         <CSS.Content>
-          
           <CSS.ModalInput placeholder='사용하는 언어를 적어주세요.'/>
           <CSS.ModalInput placeholder='github 주소를 입력해주세요.'/>
         </CSS.Content>

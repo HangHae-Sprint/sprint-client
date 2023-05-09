@@ -17,7 +17,6 @@ const IsLike = (props) => {
     const isLikeHandler = ()=>{
     setLiked(!Liked)
     mutation.mutate(props.data.sprintId)
-
   }
   return (
     <>

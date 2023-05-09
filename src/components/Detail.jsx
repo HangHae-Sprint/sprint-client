@@ -26,7 +26,7 @@ const Detail = () => {
   const applyButtonHandler = () => {
     setApply(!apply)
   }
-  const {isLoading, isError, data} = useQuery('detailSprint',()=>detailSprint(1))
+  const {isLoading, isError, data} = useQuery('detailSprint',()=>detailSprint(22))
   console.log(data)
   if(isLoading) return <div>Loading...</div>
   if(isError) return <div>Error: {Error.message}</div>
@@ -85,7 +85,7 @@ const Detail = () => {
         <Button size='80' type='positive'>등록</Button>
       </CSS.CommentForm >
       {/* todo: API응답에 commentList못가져옴  */}
-      {/* <Comment commentList={data.commentList}/> */}
+      <Comment commentList={data.commentList}/>
       </section>
     </CSS.Main>
     </>
