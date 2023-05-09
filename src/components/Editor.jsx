@@ -78,12 +78,14 @@ const Editor = () => {
       setWarningNotice("최대인원을 한명이라도 적어주세요.");
       return;
     }
+
     if (frontend === 0 && backend === 0 && manager === 0 && design === 0) {
       setWarningNotice("최대인원을 한명이라도 적어주세요.");
       return;
     }
     mutation.mutate(newSprint);
   };
+
   return (
     <>
       <Header />

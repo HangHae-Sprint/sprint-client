@@ -18,8 +18,8 @@ const SignUp = () => {
   const [warningNotice, setWarningNotice] = useState('')
   const navigate = useNavigate()
   const mutation = useMutation(handleSignUp,{
-    onSuccess: () =>{
-      alert('회원가입 성공')
+    onSuccess: (data) =>{
+      alert(data.msg)
       navigate('/login')
     },
     onError:(error)=>{

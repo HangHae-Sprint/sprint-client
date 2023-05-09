@@ -422,3 +422,9 @@ border-bottom:1px solid gray;
   outline:none;
 }
 `
+//ApplyModal
+export const PositionBox = styled.div`
+
+font-size:20px;
+margin-left:20px;
+`

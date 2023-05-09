@@ -37,8 +37,8 @@ const handleLogin = async (props) => {
       password: props.password,
     });
     // return response.data
-    console.log(response);
-    const jwtToken = response.headers.get("Authorization");
+
+    const jwtToken = response.headers.get('Authorization');
     // const token = TokenExtractor(jwtToken)
     return jwtToken;
   } catch (error) {
@@ -69,10 +69,26 @@ const detailModify = async (props) => {
   });
 };
 
+//신청하기
+const ApplySprint = async (props) => {
+  // console.log('props axios:', props)
+  try {
+    const response = await jwtInstance.post(`/api/sprint/join/${props.id}`, {
+      position: props.position,
+      link: props.link,
+    })
+    return response.data
+  } catch (error) {
+    throw new Error(error.message)
+  }
+
+}
+
 //sprint 좋아요
 const isLikePost = async (props) => {
   await jwtInstance.post(`/api/like/${props}`);
 };
+
 
 //sprint All 조회
 const allSprint = async () => {
@@ -93,6 +109,7 @@ const myStudy = async () => {
     throw new Error(error.message);
   }
 };
+
 
 // My Project 조회
 const myProject = async () => {

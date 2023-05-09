@@ -11,7 +11,7 @@ const DetailModify = (props) => {
     titleInput:props.data.title,
     contentInput:props.data.content
   })
-
+  // API연동은 되었지만 값이 안내려와서 수정이 안됨.
   const mutation =useMutation(detailModify,{
     onSuccess: ()=>{
       // queryClient.invalidateQueries("getBoards")

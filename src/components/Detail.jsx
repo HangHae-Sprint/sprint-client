@@ -13,10 +13,6 @@ import { useQuery } from 'react-query'
 import { detailSprint } from '../axios/api'
 import ApplyModal from './ApplyModal'
 
-
-
-
-
 const Detail = () => {
   
   const [comment,onChangeCommentHandler] =useInput('')
@@ -26,8 +22,7 @@ const Detail = () => {
   const applyButtonHandler = () => {
     setApply(!apply)
   }
-  const {isLoading, isError, data} = useQuery('detailSprint',()=>detailSprint(22))
-  console.log(data)
+  const {isLoading, isError, data} = useQuery('detailSprint',()=>detailSprint(5))
   if(isLoading) return <div>Loading...</div>
   if(isError) return <div>Error: {Error.message}</div>
   const onClickModifyHandler = () => {
@@ -51,7 +46,7 @@ const Detail = () => {
         </ CSS.DetailTitle>
         <CSS.ApplyButtonBox>
         <Button size='180' type='positive' onClick={applyButtonHandler}>신청하기</Button>
-        {apply && <ApplyModal apply={apply} setApply={setApply}/>}
+        {apply && <ApplyModal data={data} apply={apply} setApply={setApply}/>}
         </CSS.ApplyButtonBox>
         </CSS.DetailSection>
 

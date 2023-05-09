@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Header from "../components/Header";
 import ContentBox from "../components/ContentBox";
@@ -6,9 +7,9 @@ import MyStudy from "../components/MyStudy";
 import AllSprintList from "../components/AllSprintList";
 import { useSelector } from "react-redux";
 
+
 const Main = () => {
   const sprintType = useSelector((state) => state.sprint.sprintList);
-  console.log("sprintType:", sprintType);
 
   return (
     <div>
