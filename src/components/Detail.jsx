@@ -8,6 +8,7 @@ import useInput from './Hooks/useInput'
 import { useState } from 'react'
 import DetailModify from './DetailModify'
 import { Link } from 'react-router-dom'
+import IsLike from './IsLike'
 
 
 const dummyData = 
@@ -74,14 +75,14 @@ const dummyData =
 const Detail = () => {
   const [comment,onChangeCommentHandler] =useInput('')
   const [modify,setModify] = useState(false)
-  const [Liked,setLiked]= useState(true)
+  // const [Liked,setLiked]= useState(true)
 
   const onClickModifyHandler = () => {
     setModify(!modify)
   }
-  const isLikeHandler = ()=>{
-    setLiked(!Liked)
-  }
+  // const isLikeHandler = ()=>{
+  //   setLiked(!Liked)
+  // }
   return (
     <>
     <Header/>
@@ -103,8 +104,9 @@ const Detail = () => {
         <CSS.DetailContent>{dummyData.content}</CSS.DetailContent>
         <CSS.DetailEdit>
           <CSS.DetailLike>
-          {Liked ? 
-          <CSS.Heart onClick={isLikeHandler}/>:<CSS.BeanHeart onClick={isLikeHandler}/>} 
+          {/* {Liked ? 
+          <CSS.Heart onClick={isLikeHandler}/>:<CSS.BeanHeart onClick={isLikeHandler}/>}  */}
+        <IsLike/>
 
           <CSS.Like>좋아요 {dummyData.numLikes} 개</CSS.Like>
           </CSS.DetailLike>
