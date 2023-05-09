@@ -13,67 +13,67 @@ const AllSprintList = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {Error.message}</div>;
 
-  const cards = [
-    {
-      sprintId: 10,
-      title: "All",
-      nickname: "All",
-      numLikes: 10,
-      isLiked: true,
-      createdAt: "LocalDateTime",
-      modifiedAt: "LocalDateTime",
-      sprintType: "Project",
-      fieldObjectList: [
-        {
-          fieldName: "FE",
-          fieldMemberCount: 3,
-          fieldMaxNum: 5,
-        },
-        {
-          fieldName: "BE",
-          fieldMemberCount: 2,
-          fieldMaxNum: 3,
-        },
-      ],
-    },
-    {
-      sprintId: 11,
-      title: "All2",
-      nickname: "All2",
-      numLikes: 10,
-      isLiked: true,
-      createdAt: "LocalDateTime",
-      modifiedAt: "LocalDateTime",
-      sprintType: "Project",
-      fieldObjectList: [
-        {
-          fieldName: "FE",
-          fieldMemberCount: 3,
-          fieldMaxNum: 5,
-        },
-        {
-          fieldName: "BE",
-          fieldMemberCount: 2,
-          fieldMaxNum: 4,
-        },
-      ],
-    },
-  ];
+  // const cards = [
+  //   {
+  //     sprintId: 10,
+  //     title: "All",
+  //     nickname: "All",
+  //     numLikes: 10,
+  //     isLiked: true,
+  //     createdAt: "LocalDateTime",
+  //     modifiedAt: "LocalDateTime",
+  //     sprintType: "Project",
+  //     fieldObjectList: [
+  //       {
+  //         fieldName: "FE",
+  //         fieldMemberCount: 3,
+  //         fieldMaxNum: 5,
+  //       },
+  //       {
+  //         fieldName: "BE",
+  //         fieldMemberCount: 2,
+  //         fieldMaxNum: 3,
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     sprintId: 11,
+  //     title: "All2",
+  //     nickname: "All2",
+  //     numLikes: 10,
+  //     isLiked: true,
+  //     createdAt: "LocalDateTime",
+  //     modifiedAt: "LocalDateTime",
+  //     sprintType: "Project",
+  //     fieldObjectList: [
+  //       {
+  //         fieldName: "FE",
+  //         fieldMemberCount: 3,
+  //         fieldMaxNum: 5,
+  //       },
+  //       {
+  //         fieldName: "BE",
+  //         fieldMemberCount: 2,
+  //         fieldMaxNum: 4,
+  //       },
+  //     ],
+  //   },
+  // ];
 
   return (
     <>
       <Header />
       <StCardLists>
-        {cards.map((card) => (
-          <StCards key={card.sprintId}>
-            <StCardTitles>{card.title}</StCardTitles>
+        {data.map((item) => (
+          <StCards key={item.sprintId}>
+            <StCardTitles>{item.title}</StCardTitles>
             <StCardContent>
-              <div>{` ${card.nickname}`}</div>
-              <div>{` ${card.sprintType}`}</div>
-              <div>{` ${card.numLikes}`}</div>
+              <div>{` ${item.nickname}`}</div>
+              <div>{` ${item.sprintType}`}</div>
+              <div>{` ${item.numLikes}`}</div>
               <StCardField>
                 <StCardFieldTitle>모집인원:</StCardFieldTitle>
-                {card.fieldObjectList.map((field) => (
+                {item.fieldObjectList.map((field) => (
                   <StCardFieldContent key={field.fieldName}>
                     <div>{`${field.fieldName}: `}</div>
                     <div>{`${field.fieldMemberCount}/${field.fieldMaxNum}`}</div>
