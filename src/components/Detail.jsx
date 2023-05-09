@@ -7,14 +7,15 @@ import SupportStatus from './SupportStatus'
 import useInput from './Hooks/useInput'
 import { useState } from 'react'
 import DetailModify from './DetailModify'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import IsLike from './IsLike'
 import { useQuery } from 'react-query'
 import { detailSprint } from '../axios/api'
 import ApplyModal from './ApplyModal'
 
 const Detail = () => {
-  
+  const params = useParams()
+
   const [comment,onChangeCommentHandler] =useInput('')
   const [modify,setModify] = useState(false)
   const [apply,setApply]= useState(false)
@@ -22,7 +23,7 @@ const Detail = () => {
   const applyButtonHandler = () => {
     setApply(!apply)
   }
-  const {isLoading, isError, data} = useQuery('detailSprint',()=>detailSprint(5))
+  const {isLoading, isError, data} = useQuery('detailSprint',()=>detailSprint(params.id))
   if(isLoading) return <div>Loading...</div>
   if(isError) return <div>Error: {Error.message}</div>
   const onClickModifyHandler = () => {
@@ -79,7 +80,6 @@ const Detail = () => {
         placeholder='댓글을 입력해주세요.'/>
         <Button size='80' type='positive'>등록</Button>
       </CSS.CommentForm >
-      {/* todo: API응답에 commentList못가져옴  */}
       <Comment commentList={data.commentList}/>
       </section>
     </CSS.Main>

@@ -5,6 +5,7 @@ import useInput from "./Hooks/useInput";
 import Button from "./component/Button";
 import { useMutation, useQueryClient } from "react-query";
 import { addSprint } from "../axios/api";
+import { useNavigate } from "react-router-dom";
 
 const Editor = () => {
   const [frontend, onChangeFrontendHandler] = useInput(0);
@@ -17,7 +18,7 @@ const Editor = () => {
 
   const [warningNotice, setWarningNotice] = useState("");
   const [sprintType, setSprintType] = useState("Study");
-
+  const navigate = useNavigate()
   const mutation = useMutation(addSprint, {
     onSuccess: () => {
       // queryClient.invalidateQueries("getBoards")
@@ -84,6 +85,7 @@ const Editor = () => {
       return;
     }
     mutation.mutate(newSprint);
+    navigate('/main')
   };
 
   return (

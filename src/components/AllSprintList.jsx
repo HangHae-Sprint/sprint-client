@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 
 const AllSprintList = () => {
   const navigate = useNavigate();
+
   // const [isVisible, setIsVisible] = useState('')
   //API 연결
   const { isLoading, isError, data } = useQuery("allSprint", allSprint);
@@ -16,11 +17,13 @@ const AllSprintList = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {Error.message}</div>;
+
   const detailOpen = (sprintId) => {
     // if (!!Cookies.get('token')) {
     //   alert('로그인이 필요합니다.')
     //   return;
     // }
+
     navigate(`/main/${sprintId}`);
   };
 
@@ -39,7 +42,7 @@ const AllSprintList = () => {
                 {item.fieldObjectList.map((field) => (
                   <StCardFieldContent key={field.fieldName}>
                     <div>{`${field.fieldName}: `}</div>
-                    <div>{`${field.fieldMemberCount}/${field.fieldMaxNum}`}</div>
+                    <div>{`${field.nowMemberCount}/${field.fieldMaxNum}`}</div>
 
                     <StCardFieldBar>
                       <StCardFieldBarFill
@@ -52,10 +55,10 @@ const AllSprintList = () => {
               </StCardField>
             </StCardContent>
 
-            {/* <Link to={`/main/${item.sprintId}`}> */}
             <Button onClick={() => detailOpen(item.sprintId)} type="positive">
               more
             </Button>
+
             {/* </Link> */}
           </StCards>
         ))}
@@ -107,32 +110,6 @@ const StCardFieldContent = styled.div`
   align-items: center;
 `;
 
-const StContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-`;
-
-const StFilterButtons = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-
-  & > button {
-    margin-right: 10px;
-    background-color: #f5f5f5;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #e0e0e0;
-    }
-  }
-`;
 const StCardFieldBar = styled.div`
   background-color: #f0f0f0;
   border-radius: 4px;

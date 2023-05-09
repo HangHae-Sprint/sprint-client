@@ -45,8 +45,8 @@ const MenuBar = ({ isActive, toggleMenu }) => {
             </li>
           </StMenuBarTopContainer>
           <div style={{ height: "33px" }}></div>
-          <Link to="/allSprint">
-            <a href="#">전체 리스트</a>
+          <Link to="/main">
+            <div>전체 리스트</div>
           </Link>
           <li>
             <Button href="#" onClick={toggleMySprint}>
