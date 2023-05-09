@@ -120,7 +120,26 @@ const myProject = async () => {
   }
 };
 
+// 댓글 작성(추가)
+const writeComment = async () => {
+  try {
+    const response = await jwtInstance.post("/api/{sprintId}");
+    return response.data;
+  } catch (error) {
+    // Handle the error if the comment could not be created
+    throw new Error(error.message);
+  }
+};
 
+// 댓글 삭제하기
+const deleteComment = async (commentId) => {
+  try {
+    const response = await jwtInstance.delete(`/api/{sprintId}/{commentId}`);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 export {
   handleSignUp,
@@ -133,4 +152,6 @@ export {
   myStudy,
   myProject,
   ApplySprint,
+  writeComment,
+  deleteComment,
 };
