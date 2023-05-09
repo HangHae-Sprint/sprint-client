@@ -1,68 +1,31 @@
 import styled from "styled-components";
 import { Button } from "./component/style";
 import Header from "./Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { allSprint } from "../axios/api";
+import { useState } from "react";
+import Cookies from "js-cookie";
 
 const AllSprintList = () => {
+  const navigate = useNavigate();
+  // const [isVisible, setIsVisible] = useState('')
   //API 연결
   const { isLoading, isError, data } = useQuery("allSprint", allSprint);
   // debugger;
-  // console.log(data);
+
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {Error.message}</div>;
-
-  // const cards = [
-  //   {
-  //     sprintId: 10,
-  //     title: "All",
-  //     nickname: "All",
-  //     numLikes: 10,
-  //     isLiked: true,
-  //     createdAt: "LocalDateTime",
-  //     modifiedAt: "LocalDateTime",
-  //     sprintType: "Project",
-  //     fieldObjectList: [
-  //       {
-  //         fieldName: "FE",
-  //         fieldMemberCount: 3,
-  //         fieldMaxNum: 5,
-  //       },
-  //       {
-  //         fieldName: "BE",
-  //         fieldMemberCount: 2,
-  //         fieldMaxNum: 3,
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     sprintId: 11,
-  //     title: "All2",
-  //     nickname: "All2",
-  //     numLikes: 10,
-  //     isLiked: true,
-  //     createdAt: "LocalDateTime",
-  //     modifiedAt: "LocalDateTime",
-  //     sprintType: "Project",
-  //     fieldObjectList: [
-  //       {
-  //         fieldName: "FE",
-  //         fieldMemberCount: 3,
-  //         fieldMaxNum: 5,
-  //       },
-  //       {
-  //         fieldName: "BE",
-  //         fieldMemberCount: 2,
-  //         fieldMaxNum: 4,
-  //       },
-  //     ],
-  //   },
-  // ];
+  const detailOpen = (sprintId) => {
+    // if (!!Cookies.get('token')) {
+    //   alert('로그인이 필요합니다.')
+    //   return;
+    // }
+    navigate(`/main/${sprintId}`);
+  };
 
   return (
     <>
-      <Header />
       <StCardLists>
         {data.map((item) => (
           <StCards key={item.sprintId}>
@@ -80,7 +43,7 @@ const AllSprintList = () => {
 
                     <StCardFieldBar>
                       <StCardFieldBarFill
-                        fill={field.fieldMemberCount}
+                        fill={field.nowMemberCount}
                         max={field.fieldMaxNum}
                       />
                     </StCardFieldBar>
@@ -89,9 +52,11 @@ const AllSprintList = () => {
               </StCardField>
             </StCardContent>
 
-            <Link to="/detail">
-              <Button type="positive">more</Button>
-            </Link>
+            {/* <Link to={`/main/${item.sprintId}`}> */}
+            <Button onClick={() => detailOpen(item.sprintId)} type="positive">
+              more
+            </Button>
+            {/* </Link> */}
           </StCards>
         ))}
       </StCardLists>
@@ -184,25 +149,3 @@ const StCardFieldBarFill = styled.div`
   width: ${(props) =>
     props.fill ? `${(props.fill / props.max) * 100}%` : "0"};
 `;
-
-// const StCardList = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-// `;
-
-// const StCard = styled.div`
-//   width: 300px;
-//   margin: 20px;
-//   background-color: white;
-//   border: 1px solid #ccc;
-//   border-radius: 5px;
-//   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-//   overflow: hidden;
-// `;
-
-// const StCardImage = styled.img`
-//   width: 100%;
-//   height: 200px;
-//   object-fit: cover;
-// `;
