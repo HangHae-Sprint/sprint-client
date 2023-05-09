@@ -1,29 +1,21 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+// import axios from "axios";
+// import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Button } from "./component/style";
+import { myProject } from "../axios/api";
+import { useQuery } from "react-query";
 
 const MyProject = () => {
-  // const [cards, setCards] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchCards = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `${process.env.REACT_APP_SERVER_URL}/api/cards?type=My%20Study`
-  //       );
-  //       setCards(response.data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchCards();
-  // }, []);
+  //API 연결
+  const { isLoading, isError, data } = useQuery("myProject", myProject);
+  // debugger;
+  console.log(data);
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error: {Error.message}</div>;
   const cards = [
     {
-      sprintId: 10,
       title: "Project 1",
-      nickname: "String",
+      nickname: "Pro",
       numLikes: 10,
       isLiked: true,
       createdAt: "LocalDateTime",
@@ -43,7 +35,6 @@ const MyProject = () => {
       ],
     },
     {
-      sprintId: 11,
       title: "Project 2",
       nickname: "String",
       numLikes: 10,

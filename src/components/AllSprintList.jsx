@@ -1,26 +1,18 @@
-// import axios from "axios";
-// import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Button } from "./component/style";
 import Header from "./Header";
 import { Link } from "react-router-dom";
+import { useQuery } from "react-query";
+import { allSprint } from "../axios/api";
 
 const AllSprintList = () => {
-  // const [cards, setCards] = useState([]);
+  //API 연결
+  const { isLoading, isError, data } = useQuery("allSprint", allSprint);
+  // debugger;
+  console.log(data);
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error: {Error.message}</div>;
 
-  // useEffect(() => {
-  //   const fetchCards = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `${process.env.REACT_APP_SERVER_URL}/api/cards?type=My%20Study`
-  //       );
-  //       setCards(response.data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchCards();
-  // }, []);
   const cards = [
     {
       sprintId: 10,
@@ -33,12 +25,12 @@ const AllSprintList = () => {
       sprintType: "Project",
       fieldObjectList: [
         {
-          fieldName: "frontend",
+          fieldName: "FE",
           fieldMemberCount: 3,
           fieldMaxNum: 5,
         },
         {
-          fieldName: "backend",
+          fieldName: "BE",
           fieldMemberCount: 2,
           fieldMaxNum: 3,
         },
@@ -55,14 +47,14 @@ const AllSprintList = () => {
       sprintType: "Project",
       fieldObjectList: [
         {
-          fieldName: "frontend",
+          fieldName: "FE",
           fieldMemberCount: 3,
           fieldMaxNum: 5,
         },
         {
-          fieldName: "backend",
+          fieldName: "BE",
           fieldMemberCount: 2,
-          fieldMaxNum: 3,
+          fieldMaxNum: 4,
         },
       ],
     },
@@ -80,11 +72,20 @@ const AllSprintList = () => {
               <div>{` ${card.sprintType}`}</div>
               <div>{` ${card.numLikes}`}</div>
               <StCardField>
-                <StCardFieldTitle>Fields:</StCardFieldTitle>
+                <StCardFieldTitle>모집인원:</StCardFieldTitle>
                 {card.fieldObjectList.map((field) => (
                   <StCardFieldContent key={field.fieldName}>
                     <div>{`${field.fieldName}: `}</div>
                     <div>{`${field.fieldMemberCount}/${field.fieldMaxNum}`}</div>
+                    {/* <div>
+                      <>
+                        {Liked ? (
+                          <CSS.Heart onClick={isLikeHandler} />
+                        ) : (
+                          <CSS.BeanHeart onClick={isLikeHandler} />
+                        )}
+                      </>
+                    </div> */}
                     <StCardFieldBar>
                       <StCardFieldBarFill
                         fill={field.fieldMemberCount}
@@ -95,6 +96,7 @@ const AllSprintList = () => {
                 ))}
               </StCardField>
             </StCardContent>
+
             <Link to="/detail">
               <Button type="positive">more</Button>
             </Link>

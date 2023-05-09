@@ -1,25 +1,16 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Button } from "./component/style";
+import { useQuery } from "react-query";
+import { myStudy } from "../axios/api";
 
 import styled from "styled-components";
 
 const MyStudy = () => {
-  // const [cards, setCards] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchCards = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `${process.env.REACT_APP_SERVER_URL}/api/cards?type=My%20Study`
-  //       );
-  //       setCards(response.data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchCards();
-  // }, []);
+  //API 연결
+  const { isLoading, isError, data } = useQuery("myStudy", myStudy);
+  // debugger;
+  console.log(data);
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error: {Error.message}</div>;
   const cards = [
     {
       sprintId: 10,

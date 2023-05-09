@@ -19,7 +19,7 @@ const Router = () => {
         <Route path="editor" element={<Editor />} />
         <Route path="main" element={<Main />} />
         <Route path="detail" element={<Detail />} />
-        <Route path="allSprintList" element={<AllSprintList />} />
+        <Route path="allSprint" element={<AllSprintList />} />
       </Routes>
     </BrowserRouter>
   );
