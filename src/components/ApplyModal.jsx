@@ -25,7 +25,7 @@ const ApplyModal = ({setApply,apply,data}) => {
     position,
     link,
   }
-  console.log(application)
+
   const onClickApplyButtonHandler = () =>{
     const urlRegex = /^(http(s)?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
     if(!urlRegex.test(link)){
