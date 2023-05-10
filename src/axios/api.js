@@ -92,7 +92,7 @@ const isLikePost = async (props) => {
 const allSprint = async () => {
   try {
     const response = await jwtInstance.get(`/api/sprint`);
-    console.log(`reportError.data`, response.data)
+    console.log(`reportError.data`, response.data);
     return response.data;
   } catch (error) {
     throw new Error(error.message);
@@ -121,21 +121,22 @@ const myProject = async () => {
   }
 };
 
-// 댓글 작성(추가)
-const writeComment = async () => {
+// 댓글 작성(등록)
+const writeComment = async (sprintId) => {
   try {
-    const response = await jwtInstance.post("/api/{sprintId}");
+    const response = await jwtInstance.post(`/api/${sprintId}`);
     return response.data;
   } catch (error) {
-    // Handle the error if the comment could not be created
     throw new Error(error.message);
   }
 };
 
 // 댓글 삭제하기
-const deleteComment = async (commentId) => {
+const deleteComment = async (props) => {
   try {
-    const response = await jwtInstance.delete(`/api/{sprintId}/{commentId}`);
+    const response = await jwtInstance.delete(
+      `/api/${props.sprintId}/${props.commentId}`
+    );
     return response.data;
   } catch (error) {
     throw new Error(error.message);

@@ -4,7 +4,6 @@ import Header from "./Header";
 import * as CSS from "../components/component/style";
 import Comment from "./Comment";
 import SupportStatus from "./SupportStatus";
-import useInput from "./Hooks/useInput";
 import { useState } from "react";
 import DetailModify from "./DetailModify";
 import { Link, useParams } from "react-router-dom";
@@ -12,11 +11,12 @@ import IsLike from "./IsLike";
 import { useQuery } from "react-query";
 import { detailSprint } from "../axios/api";
 import ApplyModal from "./ApplyModal";
+// import { writeComment } from "../axios/api";
 
 const Detail = () => {
   const params = useParams();
 
-  const [comment, onChangeCommentHandler] = useInput("");
+  // const [comment, onClickCommentHandler] = useInput("");
   const [modify, setModify] = useState(false);
   const [apply, setApply] = useState(false);
 
@@ -34,6 +34,7 @@ const Detail = () => {
   // const isLikeHandler = ()=>{
   //   setLiked(!Liked)
   // }
+
   return (
     <>
       <Header />
@@ -89,16 +90,16 @@ const Detail = () => {
           <DetailModify data={data} modify={modify} setModify={setModify} />
         )}
         <section>
-          <CSS.CommentForm onSubmit={(e) => e.preventDefault()}>
+          {/* <CSS.CommentForm onSubmit={(e) => e.preventDefault()}>
             <CSS.CommentInput
               value={comment}
-              onChange={onChangeCommentHandler}
+              onChange={onClickCommentHandler}
               placeholder="댓글을 입력해주세요."
             />
             <Button size="80" type="positive">
               등록
             </Button>
-          </CSS.CommentForm>
+          </CSS.CommentForm> */}
 
           <Comment commentList={data.commentList} />
         </section>
