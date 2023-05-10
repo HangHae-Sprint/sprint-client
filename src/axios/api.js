@@ -92,6 +92,7 @@ const isLikePost = async (props) => {
 const allSprint = async () => {
   try {
     const response = await jwtInstance.get(`/api/sprint`);
+    console.log(`reportError.data`, response.data)
     return response.data;
   } catch (error) {
     throw new Error(error.message);

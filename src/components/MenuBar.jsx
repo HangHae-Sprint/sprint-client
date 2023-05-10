@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Button } from "./component/style";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { myProject, myStudy } from "../redux/modules/sprintMenu";
+import { allList, listRefer, myProject, myStudy } from "../redux/modules/sprintMenu";
 
 const MenuBar = ({ isActive, toggleMenu }) => {
   const [isMySprintOpen, setIsMySprintOpen] = useState(false);
@@ -14,14 +14,18 @@ const MenuBar = ({ isActive, toggleMenu }) => {
   };
 
   const handleMyProjectClick = () => {
-    dispatch(myProject("project"));
+    dispatch(listRefer("project"));
     navigate("/main");
   };
 
   const handleMyStudyClick = () => {
-    dispatch(myStudy("study"));
+    dispatch(listRefer("study"));
     navigate("/main");
   };
+  const handleAllListClickHandler = () => {
+    dispatch(listRefer("all"));
+    navigate("/main");
+  }
   return (
     <MenuBarContainer>
       <HamburgerButton className="hamburger" zIndex={100} onClick={toggleMenu}>
@@ -44,10 +48,10 @@ const MenuBar = ({ isActive, toggleMenu }) => {
               </Link>
             </li>
           </StMenuBarTopContainer>
-          <div style={{ height: "33px" }}></div>
-          <Link to="/main">
-            <div>전체 리스트</div>
-          </Link>
+
+
+          <Button type="positive" onClick={handleAllListClickHandler}>전체 리스트</Button>
+
           <li>
             <Button href="#" onClick={toggleMySprint}>
               My Sprint {isMySprintOpen ? "▲" : "▼"}

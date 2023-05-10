@@ -4,17 +4,16 @@ import * as CSS from '../components/component/style'
 import useInput from './Hooks/useInput'
 import { useMutation } from 'react-query'
 import { ApplySprint, isLikePost } from '../axios/api'
+import { useNavigate } from 'react-router-dom'
 
 
 const ApplyModal = ({setApply,apply,data}) => {
   const [link,onChangeLinkHandler] = useInput('')
   const [position, setPosition] = useState('frontend');
   const [warningNotice, setWarningNotice] = useState('')
-
   const mutation = useMutation(ApplySprint,{
     onSuccess: ()=>{
       alert('신청이 완료 되었습니다.')
-      setApply(!apply)
     },
     onError:(error) =>{
       alert('실패')
@@ -33,6 +32,8 @@ const ApplyModal = ({setApply,apply,data}) => {
       return;
     }
     mutation.mutate(application)
+    setApply(!apply)
+
   }
 
   const onClickCancelModalHandler = ()=>{
@@ -69,7 +70,7 @@ const ApplyModal = ({setApply,apply,data}) => {
           value={link}
           onChange={onChangeLinkHandler}
           placeholder='github 주소를 입력해주세요.'/>
-          {warningNotice}
+          <CSS.WarningNotice>{warningNotice}</CSS.WarningNotice>
         </CSS.Content>
         <CSS.ModalButton>
           <Button type='positive'

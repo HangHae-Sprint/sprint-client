@@ -4,13 +4,12 @@ import { isLikePost } from "../axios/api";
 import * as CSS from "../components/component/style";
 
 const IsLike = (props) => {
-  console.log(`props:`,props.data)
+console.log(`props:`,props)
   const [Liked, setLiked] = useState(props.isLiked);
 
   const mutation = useMutation(isLikePost, {
     onSuccess: () => {
       // queryClient.invalidateQueries("getBoards")
-      alert("작성 저장 성공");
     },
   });
 
