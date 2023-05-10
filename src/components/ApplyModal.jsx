@@ -27,7 +27,7 @@ const ApplyModal = ({setApply,apply,data}) => {
 
   const onClickApplyButtonHandler = () =>{
     const urlRegex = /^(http(s)?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
-    if(!urlRegex.test(link)){
+    if(link === !urlRegex.test(link)){
       setWarningNotice('URL형식으로 입력해주세요.')
       return;
     }

@@ -32,6 +32,34 @@ export const Button = styled.button`
   border: none;
   border-radius: 8px;
   background-color: ${(props) => {
+
+    switch (props.type) {
+      case "positive":
+        return "#F0F0F0";
+      case "negative":
+        return "#F8F4EA";
+      default:
+        return "transparent";
+    }
+  }};
+  color: ${(props) => (props.type === "positive" ? "#3C486B" : "#243763")};
+  padding: 10px;
+  width: ${(props) => `${props.size}px;`};
+
+  font-weight: 600;
+  &:hover {
+    background-color: ${(props) => {
+    switch (props.type) {
+      case "positive":
+        return "#579BB1";
+      case "negative":
+        return "#CE7777";
+      default:
+        return "transparent";
+    }
+  }};
+    color: ${(props) => {
+
     switch (props.type) {
       case "positive":
         return "#F0F0F0";
@@ -67,6 +95,7 @@ export const Button = styled.button`
           return "#CE7777";
       }
     }};
+
     transform: scale(1.05);
     cursor: pointer;
   }
@@ -357,49 +386,7 @@ export const CommentContentInput = styled.input`
   }
 `;
 
-export const CommentButton = styled.button`
-  border: none;
-  border-radius: 8px;
-  background-color: ${(props) => {
-    switch (props.type) {
-      case "positive":
-        return "#F0F0F0";
-      case "negative":
-        return "#F8F4EA";
-      default:
-        return "transparent";
-    }
-  }};
-  color: ${(props) => (props.type === "positive" ? "#3C486B" : "#243763")};
-  padding: 10px;
-  width: ${(props) => `${props.size}px;`};
 
-  font-weight: 600;
-  &:hover {
-    background-color: ${(props) => {
-      switch (props.type) {
-        case "positive":
-          return "#579BB1";
-        case "negative":
-          return "#CE7777";
-        default:
-          return "transparent";
-      }
-    }};
-    color: ${(props) => {
-      switch (props.type) {
-        case "positive":
-          return "#F0F0F0";
-        case "negative":
-          return "#F8F4EA";
-        default:
-          return "#CE7777";
-      }
-    }};
-    transform: scale(1.05);
-    cursor: pointer;
-  }
-`;
 
 export const CommentTitle = styled.h1`
   width: 800px;
@@ -578,4 +565,95 @@ position:absolute;
 right:3rem;
 bottom: 2rem;
 `
+
+
+export const MenuBarTopContainer = styled.div`
+  /* border: 1px solid black; */
+  transform: translateX(0%) translateY(-78px);
+`;
+
+export const MenuBarContainer = styled.div`
+  /* position: relative; */
+  z-index: 1;
+`;
+
+export const HamburgerButton = styled.button`
+  display: inline-block;
+  z-index: ${(props) => props.zIndex || "auto"};
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
+export const HamburgerLine = styled.span`
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: #333;
+`;
+
+export const MenuBarDropdown = styled.div`
+  position: fixed;
+  /* margin-top: 130px; */
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #fff;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+
+  &.active {
+    transform: translateX(0);
+  }
+
+  ${MenuBarContainer}.active & {
+    display: block;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 200px;
+  }
+
+  li {
+    margin-bottom: 20px;
+  }
+
+  a {
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+
+
+  }
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+
+    & > * {
+      margin: 0 5px;
+    }
+  }
+`;
 

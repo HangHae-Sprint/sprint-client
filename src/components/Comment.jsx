@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as CSS from "../components/component/style";
 import { writeComment, deleteComment } from "../axios/api";
+
 import Button from "./component/Button";
 
 const Comment = (props) => {
@@ -16,6 +17,7 @@ const Comment = (props) => {
 
   const handleDeleteComment = (commentId) => {
     deleteComment(props.sprintId, commentId);
+
   };
 
   return (
@@ -35,14 +37,17 @@ const Comment = (props) => {
         </CSS.CommentForm>
 
         {props.commentList.map((item) => {
+
           return (
             <CSS.CommentBox key={item.id}>
               <CSS.CommentTitle>
                 {item.nickname} | {item.createdAt}
               </CSS.CommentTitle>
+
               <CSS.CommentContent>{item.comment}</CSS.CommentContent>
               {item.user === "user123" && (
                 <CSS.CommentButton>
+
                   <CSS.CommentButton
                     onClick={() => handleDeleteComment(item.id)}
                   >

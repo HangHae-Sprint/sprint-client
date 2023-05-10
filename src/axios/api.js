@@ -92,17 +92,17 @@ const isLikePost = async (props) => {
 const allSprint = async () => {
   try {
     const response = await jwtInstance.get(`/api/sprint`);
-    console.log(`reportError.data`, response.data);
+
     return response.data;
   } catch (error) {
     throw new Error(error.message);
   }
 };
 
-// My Study 조회
+//내가 만든 스프린트 조회 
 const myStudy = async () => {
   try {
-    const response = await jwtInstance.get(`/api/sprint`);
+    const response = await jwtInstance.get(`/api/sprint/mysprint`);
     // const response = await jwtInstance.get(`/api/sprint/mystudy`);
     return response.data;
   } catch (error) {
@@ -110,10 +110,12 @@ const myStudy = async () => {
   }
 };
 
-// My Project 조회
+
+// 참여중인 스프린트 조회
+
 const myProject = async () => {
   try {
-    const response = await jwtInstance.get(`/api/sprint`);
+    const response = await jwtInstance.get(`api/sprint/joinlist`);
     // const response = await jwtInstance.get(`/api/sprint/myproject`);
     return response.data;
   } catch (error) {

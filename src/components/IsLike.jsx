@@ -4,9 +4,7 @@ import { isLikePost } from "../axios/api";
 import * as CSS from "../components/component/style";
 
 const IsLike = (props) => {
-console.log(`props:`,props)
-  const [Liked, setLiked] = useState(props.isLiked);
-
+  const [Liked, setLiked] = useState(props.data.IsLike);
   const mutation = useMutation(isLikePost, {
     onSuccess: () => {
       // queryClient.invalidateQueries("getBoards")
@@ -17,6 +15,7 @@ console.log(`props:`,props)
     setLiked(!Liked);
     mutation.mutate(props.data.sprintId);
   };
+  
   return (
     <>
       {Liked ? (
