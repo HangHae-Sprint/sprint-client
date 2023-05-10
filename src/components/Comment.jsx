@@ -8,6 +8,7 @@ const Comment = (props) => {
   const [commentList, setCommentList] = useState("");
   const [editingCommentId, setEditingCommentId] = useState("");
 
+  // 댓글 추가하기 핸들러
   const handleWriteComment = () => {
     const commentData = {
       content: commentList,
@@ -15,8 +16,7 @@ const Comment = (props) => {
       nickname: props.sprintId,
     };
     writeComment(commentData)
-      .then((newComment) => {
-        // Handle the newly created comment
+      .then((commentData) => {
         setCommentList("");
       })
       .catch((error) => {
@@ -24,28 +24,27 @@ const Comment = (props) => {
       });
   };
 
-  const handleEditComment = (commentId) => {
-    const commentData = {
-      content: commentList,
-      user: "user123", // Replace with the actual user who wrote the comment
-      sprintId: props.sprintId,
-    };
-    updateComment(commentId, commentData)
-      .then((updatedComment) => {
-        // Handle the updated comment
-        setEditingCommentId("");
-        setCommentList("");
-      })
-      .catch((error) => {
-        throw new Error(error.message);
-      });
-  };
+  // //댓글 수정하기 핸들러
+  // const handleEditComment = (commentId) => {
+  //   const commentData = {
+  //     content: commentList,
+  //     user: "user123",
+  //     sprintId: props.sprintId,
+  //   };
+  //   updateComment(commentId, commentData)
+  //     .then((updatedComment) => {
+  //       setEditingCommentId("");
+  //       setCommentList("");
+  //     })
+  //     .catch((error) => {
+  //       throw new Error(error.message);
+  //     });
+  // };
 
+  //댓글 삭제하기 핸들러
   const handleDeleteComment = (commentId) => {
     deleteComment(commentId)
-      .then(() => {
-        // Handle the successful deletion of the comment
-      })
+      .then(() => {})
       .catch((error) => {
         throw new Error(error.message);
       });
@@ -56,28 +55,28 @@ const Comment = (props) => {
       <CSS.CommentSection>
         <CSS.CommentForm onSubmit={(e) => e.preventDefault()}>
           <CSS.CommentInput
-            value={commentContent}
-            onChange={(e) => setCommentContent(e.target.value)}
+            value={commentList}
+            onChange={(e) => setCommentList(e.target.value)}
             placeholder="댓글을 입력해주세요."
           />
-          <CSS.CommentFormButtonBox>
+          <CSS.CommentButtonBox>
             {editingCommentId ? (
               <>
-                <CSS.CommentFormButton
+                {/* <CSS.CommentButton
                   onClick={() => handleEditComment(editingCommentId)}
                 >
                   수정 완료
-                </CSS.CommentFormButton>
-                <CSS.CommentFormButton onClick={() => setEditingCommentId("")}>
+                </CSS.CommentButton> */}
+                <CSS.CommentButton onClick={() => setEditingCommentId("")}>
                   취소
-                </CSS.CommentFormButton>
+                </CSS.CommentButton>
               </>
             ) : (
-              <CSS.CommentFormButton onClick={handleCreateComment}>
+              <CSS.CommentButton onClick={handleWriteComment}>
                 등록
-              </CSS.CommentFormButton>
+              </CSS.CommentButton>
             )}
-          </CSS.CommentFormButtonBox>
+          </CSS.CommentButtonBox>
         </CSS.CommentForm>
 
         {data.map((item) => {
@@ -88,14 +87,14 @@ const Comment = (props) => {
               </CSS.CommentTitle>
               {editingCommentId === item.id ? (
                 <CSS.CommentContentInput
-                  value={commentContent}
+                  value={commentList}
                   onChange={(e) => setCommentList(e.target.value)}
                 />
               ) : (
                 <CSS.CommentContent>{item.comment}</CSS.CommentContent>
               )}
               {item.user === "user123" && (
-                <CSS.CommentButtons>
+                <CSS.CommentButton>
                   {editingCommentId !== item.id ? (
                     <CSS.CommentButton
                       onClick={() => setEditingCommentId(item.id)}
@@ -112,7 +111,7 @@ const Comment = (props) => {
                   >
                     삭제
                   </CSS.CommentButton>
-                </CSS.CommentButtons>
+                </CSS.CommentButton>
               )}
             </CSS.CommentBox>
           );

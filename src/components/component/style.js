@@ -336,6 +336,69 @@ export const DetailEdit = styled.div`
 `;
 
 //Comment
+export const CommentButtonBox = styled.div`
+  width: 320px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+`;
+
+export const CommentContentInput = styled.input`
+  margin: 10px;
+  width: 250px;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid gray;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const CommentButton = styled.button`
+  border: none;
+  border-radius: 8px;
+  background-color: ${(props) => {
+    switch (props.type) {
+      case "positive":
+        return "#F0F0F0";
+      case "negative":
+        return "#F8F4EA";
+      default:
+        return "transparent";
+    }
+  }};
+  color: ${(props) => (props.type === "positive" ? "#3C486B" : "#243763")};
+  padding: 10px;
+  width: ${(props) => `${props.size}px;`};
+
+  font-weight: 600;
+  &:hover {
+    background-color: ${(props) => {
+      switch (props.type) {
+        case "positive":
+          return "#579BB1";
+        case "negative":
+          return "#CE7777";
+        default:
+          return "transparent";
+      }
+    }};
+    color: ${(props) => {
+      switch (props.type) {
+        case "positive":
+          return "#F0F0F0";
+        case "negative":
+          return "#F8F4EA";
+        default:
+          return "#CE7777";
+      }
+    }};
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+`;
+
 export const CommentTitle = styled.h1`
   width: 800px;
   padding-bottom: 10px;

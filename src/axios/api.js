@@ -1,7 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-
 const instance = axios.create({
   baseURL: process.env.REACT_APP_SERVER_URL,
 });
@@ -86,7 +85,7 @@ const ApplySprint = async (props) => {
 
 //sprint 좋아요
 const isLikePost = async (props) => {
-  await jwtInstance.post(`/api/like/${props}`);
+  await jwtInstance.post(`/api/like/sprint/${props}`);
 };
 
 //sprint All 조회
