@@ -135,7 +135,12 @@ const ApplySprint = async (props) => {
 
 //sprint 좋아요
 const isLikePost = async (props) => {
-  await jwtInstance.post(`/api/like/sprint/${props}`);
+  await jwtInstance.post(`/api/like/sprint/${props}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: Cookies.get("token"),
+    }
+  });
 };
 
 
