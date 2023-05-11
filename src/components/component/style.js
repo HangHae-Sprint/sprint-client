@@ -526,12 +526,12 @@ export const CardTitle = styled.h2`
 `;
 
 export const CardContent = styled.div`
-  padding: 16px;
+  padding: 13px;
   display:flex;
   flex-direction:row;
-  gap:20px;
+  gap:15px;
   font-size:18px;
-  margin:40px;
+  margin:25px;
 `;
 
 export const CardField = styled.div`
@@ -565,7 +565,6 @@ export const contentBox = styled.div`
   &:hover {
     transform: scale(1.05);
   }
-  z-index:-1;
 
 `
 

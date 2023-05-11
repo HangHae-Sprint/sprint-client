@@ -94,7 +94,6 @@ const deleteSprint = async (sprintId) => {
 //신청하기
 const ApplySprint = async (props) => {
   try {
-    console.log(props)
     const response = await jwtInstance.post(`/api/sprint/join/${props.id}`, {
       position: props.position,
       link: props.link,
