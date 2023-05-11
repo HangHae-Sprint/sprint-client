@@ -24,7 +24,6 @@ const handleSignUp = async (props) => {
     });
     return response.data;
   } catch (error) {
-    //todo: 서버에서 예외처리 하면 추후 변경
     throw new Error(error.response.data.msg);
 
   }
@@ -37,10 +36,7 @@ const handleLogin = async (props) => {
       username: props.username,
       password: props.password,
     });
-    // return response.data
-
     const jwtToken = response.headers.get("Authorization");
-    // const token = TokenExtractor(jwtToken)
     return jwtToken;
   } catch (error) {
     throw new Error(error.response.data.msg);
@@ -135,12 +131,7 @@ const ApplySprint = async (props) => {
 
 //sprint 좋아요
 const isLikePost = async (props) => {
-  await jwtInstance.post(`/api/like/sprint/${props}`, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: Cookies.get("token"),
-    }
-  });
+  await jwtInstance.post(`/api/like/sprint/${props}`);
 };
 
 
