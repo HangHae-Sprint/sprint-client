@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Detail from "../components/Detail";
 import Editor from "../components/Editor";
 import Login from "../components/Login";
-import MyStudy from "../components/ParticipateSprint";
 import SignUp from "../components/SignUp";
 import Home from "../page/Home";
 import Main from "../page/Main";

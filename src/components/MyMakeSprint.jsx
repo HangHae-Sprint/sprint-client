@@ -1,29 +1,21 @@
-import styled from "styled-components";
-import { Button } from "./component/style";
-import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
-import { allSprint, myMakeSprint, myProject } from "../axios/api";
-import { useState } from "react";
-import Cookies from "js-cookie";
-import * as CSS from './component/style'
+import { useNavigate } from "react-router-dom";
+import { myMakeSprint } from "../axios/api";
+import * as CSS from './component/style';
+import { Button } from "./component/style";
 import IsLike from "./IsLike";
 
 
 
 const MyMakeSprint = () => {
   const navigate = useNavigate()
-  // const [isVisible, setIsVisible] = useState('')
   //API 연결
   const { isLoading, isError, data } = useQuery("myMakeSprint", myMakeSprint);
-  // debugger;
+
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {Error.message}</div>;
   const detailOpen = (sprintId) =>{
-    // if (!!Cookies.get('token')) {
-    //   alert('로그인이 필요합니다.')
-    //   return;
-    // }
     navigate(`/main/${sprintId}`)
   }
   

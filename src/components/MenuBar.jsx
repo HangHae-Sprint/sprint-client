@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { Button } from "./component/style";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import * as CSS from "./component/style";
-import { allList, listRefer, myProject, myStudy } from "../redux/modules/sprintMenu";
 import Cookies from "js-cookie";
-import Editor from "./Editor";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { listRefer } from "../redux/modules/sprintMenu";
+import * as CSS from "./component/style";
+import { Button } from "./component/style";
 
 const MenuBar = ({ isActive, toggleMenu }) => {
   const [isMySprintOpen, setIsMySprintOpen] = useState(false);

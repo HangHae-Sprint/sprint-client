@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Button from './component/Button'
-import useInput from './Hooks/useInput'
-import * as CSS from '../components/component/style'
-import Header from './Header'
 import { useMutation } from 'react-query'
+import { useNavigate } from 'react-router-dom'
 import { handleSignUp } from '../axios/api'
+import * as CSS from '../components/component/style'
+import Button from './component/Button'
+import Header from './Header'
+import useInput from './Hooks/useInput'
 
 
 const SignUp = () => {

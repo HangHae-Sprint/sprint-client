@@ -1,7 +1,7 @@
-import * as CSS from "./component/style";
-import MenuBar from "./MenuBar";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as CSS from "./component/style";
+import MenuBar from "./MenuBar";
 
 const Header = ({ setFilterType }) => {
   const [isActive, setIsActive] = useState(false);

@@ -1,10 +1,8 @@
-import { Button } from "./component/style";
-import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
-import { myStudy, participateSprint } from "../axios/api";
-
-import Cookies from "js-cookie";
-import * as CSS from './component/style'
+import { useNavigate } from "react-router-dom";
+import { participateSprint } from "../axios/api";
+import { Button } from "./component/style";
+import * as CSS from './component/style';
 import IsLike from "./IsLike";
 
 
@@ -18,10 +16,6 @@ const ParticipateSprint = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {Error.message}</div>;
   const detailOpen = (sprintId) =>{
-    // if (!!Cookies.get('token')) {
-    //   alert('로그인이 필요합니다.')
-    //   return;
-    // }
     navigate(`/main/${sprintId}`)
   }
   

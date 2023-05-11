@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useMutation } from 'react-query'
 import { detailModify } from '../axios/api'
 import * as CSS from '../components/component/style'
@@ -11,10 +10,8 @@ const DetailModify = (props) => {
     titleInput:props.data.title,
     contentInput:props.data.content
   })
-  // API연동은 되었지만 값이 안내려와서 수정이 안됨.
   const mutation =useMutation(detailModify,{
     onSuccess: ()=>{
-      // queryClient.invalidateQueries("getBoards")
       alert('작성 저장 성공')
     }
   })

@@ -1,18 +1,17 @@
 import React from "react";
-import Button from "./component/Button";
-import Header from "./Header";
 import * as CSS from "../components/component/style";
 import Comment from "./Comment";
+import Button from "./component/Button";
+import Header from "./Header";
 import SupportStatus from "./SupportStatus";
-import useInput from "./Hooks/useInput";
 
 import { useState } from "react";
-import DetailModify from "./DetailModify";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import IsLike from "./IsLike";
 import { useMutation, useQuery } from "react-query";
+import { useNavigate, useParams } from "react-router-dom";
 import { deleteSprint, detailSprint } from "../axios/api";
 import ApplyModal from "./ApplyModal";
+import DetailModify from "./DetailModify";
+import IsLike from "./IsLike";
 
 const Detail = () => {
   const params = useParams();
@@ -20,7 +19,6 @@ const Detail = () => {
   const navigate= useNavigate()
   const mutation = useMutation(deleteSprint, {
     onSuccess: () => {
-      // queryClient.invalidateQueries("getBoards")
       alert("삭제성공");
       navigate('/main')
     },

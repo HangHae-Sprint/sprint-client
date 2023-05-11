@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { QueryClient, useMutation, useQueryClient } from "react-query";
+import React, { useEffect, useState } from "react";
+import { useMutation, useQueryClient } from "react-query";
 import { isLikePost } from "../axios/api";
 import * as CSS from "../components/component/style";
 

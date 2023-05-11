@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import * as CSS from "../components/component/style";
-import { deleteComment, writeComment } from "../axios/api";
-import axios from "axios";
-import { useEffect } from "react";
-import Button from "./component/Button";
 import { useMutation } from "react-query";
-import useInput from "./Hooks/useInput";
+import { deleteComment, writeComment } from "../axios/api";
+import * as CSS from "../components/component/style";
+import Button from "./component/Button";
 
 function CommentList(props) {
   const data = props.data.commentList

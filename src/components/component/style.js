@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import Tenada from "../style/fonts/Tenada.ttf";
 import LF from "../style/fonts/LF.ttf";
-import heart from "../style/image/heart.png";
+import Tenada from "../style/fonts/Tenada.ttf";
 import beanHeart from "../style/image/beanHeart.png";
+import cR1 from "../style/image/CR1.png";
+import cR2 from "../style/image/CR2.png";
+import cR3 from "../style/image/CR3.png";
+import cR4 from "../style/image/CR4.png";
+import cR5 from "../style/image/CR5.png";
+import heart from "../style/image/heart.png";
 import homeIcon from "../style/image/homeIcon.png";
-import signIcon from "../style/image/signIcon.png"
-import uri from "../style/image/uri.png"
-import cR1 from "../style/image/CR1.png"
-import cR2 from "../style/image/CR2.png"
-import cR3 from "../style/image/CR3.png"
-import cR4 from "../style/image/CR4.png"
-import cR5 from "../style/image/CR5.png"
+import signIcon from "../style/image/signIcon.png";
+import uri from "../style/image/uri.png";
 
 export const FontStyle = styled.div`
   @font-face {
@@ -795,7 +795,6 @@ export const MainGo = styled.div`
     transform: scale(1.1);
   }
   Link{
-  text-decoration: none;
 
   }
   `

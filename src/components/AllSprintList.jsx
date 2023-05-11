@@ -1,23 +1,17 @@
-import styled from "styled-components";
-import { Button } from "./component/style";
-import Header from "./Header";
-import { Link, useNavigate } from "react-router-dom";
-import { useQuery } from "react-query";
-import { allSprint } from "../axios/api";
-import { useState } from "react";
 import Cookies from "js-cookie";
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+import { allSprint } from "../axios/api";
 import * as CSS from "../components/component/style";
-import SupportStatus from "./SupportStatus";
+import { Button } from "./component/style";
 import IsLike from "./IsLike";
 
 const AllSprintList = () => {
   const navigate = useNavigate();
-  // const [isVisible, setIsVisible] = useState('')
+
   //API 연결
   const { data } = useQuery("allSprint", allSprint);
-// console.log(data)
-//   if (isLoading) return <div>Loading...</div>;
-//   if (isError) return <div>Error: {Error.message}</div>;
+
 
   const detailOpen = (sprintId) => {
     if (!Cookies.get('token')) {

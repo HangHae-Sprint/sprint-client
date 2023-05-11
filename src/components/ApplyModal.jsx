@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import Button from './component/Button'
-import * as CSS from '../components/component/style'
-import useInput from './Hooks/useInput'
 import { useMutation } from 'react-query'
-import { ApplySprint, isLikePost } from '../axios/api'
-import { useNavigate } from 'react-router-dom'
+import { ApplySprint } from '../axios/api'
+import * as CSS from '../components/component/style'
+import Button from './component/Button'
+import useInput from './Hooks/useInput'
 
 
 const ApplyModal = ({setApply,apply,data}) => {
@@ -19,8 +18,6 @@ const ApplyModal = ({setApply,apply,data}) => {
     },
     onError:(error) =>{
       setWarningNotice(error.message)
-      // console.log('error:',error)
-      // console.log('error.message:',error.message)
     }
   })
   const application = {
