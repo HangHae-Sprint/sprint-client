@@ -81,7 +81,7 @@ const Editor = () => {
       return;
     }
 
-    if (frontend < 0 || backend < 0 || manager < 0 || design < 0) {
+    if (frontend < 1 || backend < 1 || manager < 1 || design < 1) {
       setWarningNotice("최대인원을 한명이라도 적어주세요.");
       return;
     }
