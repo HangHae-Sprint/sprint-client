@@ -86,7 +86,6 @@ export const Button = styled.button`
   color: ${(props) => (props.type === "positive" ? "#3C486B" : "#243763")};
   padding: 10px;
   width: ${(props) => `${props.size}px;`};
-
   font-weight: 600;}
   &:hover {
     background-color: ${(props) => {
@@ -292,7 +291,8 @@ export const CommentInput = styled.input`
   border-bottom: 1px solid gray;
   white-space: pre-line;
   resize: none;
-  width: 2000px;
+  width: 2200px;
+
   &:focus {
     outline: none;
   }
@@ -301,7 +301,6 @@ export const CommentInput = styled.input`
 export const CommentForm = styled.form`
   display: flex;
   flex-direction: row;
-  gap: 20px;
   margin: 20px;
 `;
 export const DetailTitle = styled.h1`
@@ -416,11 +415,16 @@ export const CommentContent = styled.div`
 `;
 export const CommentBox = styled.div`
   padding-bottom: 20px;
-
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
 `;
 export const CommentSection = styled.section`
   margin: 20px;
   margin-top: 30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 `;
 //DetailModify
 export const DetailModifyButtonBox = styled.div`
@@ -686,14 +690,15 @@ export const commentListBox = styled.div`
 /* display:flex; */
 /* justify-content:center; */
 /* align-items:center; */
-background-color:yellow;
 width:1000px;
+display:flex;
+flex-direction:column;
 `
 export const SprintMain = styled.div`
-background-color:green;
+background-color:#748E61;
 width:100vw;
 height:565px;
-margin-top:160px;
+margin-top:80px;
 position:relative;
 padding-top:80px;
 z-index:-1;
@@ -701,11 +706,10 @@ z-index:-1;
 export const SprintLine = styled.div`
 width:100vw;
 height:80px;
-border-bottom:1px solid black;
+border-bottom:1px solid wheat;
 `
 export const RunningField = styled.div`
-
-background-color:red;
+background-color:#CE9488;
 `
 
 export const SignIcon = styled.div`
@@ -779,4 +783,19 @@ export const CR5 = styled.div`
   position:absolute;
   top:50%;
   left:50%;
+  `
+export const MainGo = styled.div`
+  display:flex;
+  justify-content:center;
+  font-size:25px;
+  font-weight:900;
+  margin-top:70px;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+  }
+  Link{
+  text-decoration: none;
+
+  }
   `

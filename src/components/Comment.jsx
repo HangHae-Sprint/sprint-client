@@ -8,13 +8,11 @@ import { useMutation } from "react-query";
 import useInput from "./Hooks/useInput";
 
 function CommentList(props) {
-console.log(`props:`,props)
-  const [content, handleContentChange] = useInput('')
-  const [newComment, setNewComment] = useState("");
-
-  const handleNewCommentChange = (event) => {
-    setNewComment(event.target.value);
-  };
+  const data = props.data.commentList
+  const [content, setContent] = useState('')
+  const handleContentChange = (e)=>{
+    setContent(e.target.value)
+  }
   const mutation = useMutation(writeComment,{
     onSuccess: (data) =>{
       alert('댓글 저장 성공')
@@ -23,39 +21,35 @@ console.log(`props:`,props)
       alert('댓글 저장 실패')
     }
 })
+const deleteMutation = useMutation(deleteComment,{
+  onSuccess: (data) =>{
+    alert('삭제 성공')
+  },
+  onError:(error)=>{
+    alert('삭제 실패')
+  }
+})
+
   const newPost = {
     sprintId:props.data.sprintId,
-    username:'왜쓰는지 모르겠는데요..?',
-    nickname:'이것도 왜 쓰는지 모르겠습니다..!!',
     content,
   }
 
-  const handleNewCommentSubmit = async () => {
-    // if (newComment.trim() === "") {
-    //   return;
-    // }
-    // await writeComment(props.sprintId, newComment);
-    // const updatedComments = [...props.commentList, newComment];
-    // setComments(updatedComments);
-    // setNewComment("");
+  const handleNewCommentSubmit = () => {
     mutation.mutate(newPost)
+    setContent('')
+
   };
 
-  const handleDeleteComment = async (commentId) => {
-    // await deleteComment(props.sprintId, commentId);
-    // const updatedComments = props.commentList.filter(
-    //   (item) => item._id !== commentId
-    // );
-    // setComments([...updatedComments, ...comments]);
+  const handleDeleteComment = (commentId) => {
+    const newDeleteId = {
+      commentId,
+      sprintId:props.data.sprintId
+    }
+    deleteMutation.mutate(newDeleteId)
   };
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await axios.get(`/api/sprint/${props.sprintId}/comment`);
-  //     setComments(response.data);
-  //   }
-  //   fetchData();
-  // }, [props.sprintId]);
+
 
   return (
     <>
@@ -75,24 +69,31 @@ console.log(`props:`,props)
           </CSS.CommentButtonBox>
         </CSS.CommentForm>
         <CSS.CommentForm onSubmit={(e) => e.preventDefault()}>
-            <CSS.CommentBox >
-              <CSS.CommentTitle>제목</CSS.CommentTitle>
+            <div>
+            {data.map((item)=>{
+              return(
+              <CSS.CommentBox key={item.commentId} >
+              <div>
+              <CSS.CommentTitle>{item.nickname}</CSS.CommentTitle>
 
-              <CSS.CommentContent>내용</CSS.CommentContent>
+              <CSS.CommentContent>{item.content}</CSS.CommentContent>
+              </div>
               <CSS.CommentButtonBox>
 
-              <Button
+              {item.isMyComment &&<Button
                 size="80"
                 type="negative"
+                onClick={()=>handleDeleteComment(item.commentId)}
               >
               삭제
-              </Button>
+              </Button>}
+
           </CSS.CommentButtonBox>
 
-            </CSS.CommentBox>
+            </CSS.CommentBox>)})}
+            </div>
             </CSS.CommentForm>
             </CSS.commentListBox>
-
       </CSS.CommentSection>
     </>
   );

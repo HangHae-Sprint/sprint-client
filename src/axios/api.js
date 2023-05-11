@@ -49,13 +49,22 @@ const handleLogin = async (props) => {
 
 //sprint 추가
 const addSprint = async (newSprint) => {
-  await jwtInstance.post("/api/sprint", newSprint);
+  await instance.post("/api/sprint", newSprint, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: Cookies.get("token"),
+    }
+  });
 };
-
 //sprint All 조회
 const allSprint = async () => {
   try {
-    const response = await jwtInstance.get(`/api/sprint`);
+    const response = await instance.get(`/api/sprint`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: Cookies.get("token"),
+      }
+    });
 
     return response.data;
   } catch (error) {
@@ -66,7 +75,12 @@ const allSprint = async () => {
 //sprint 상세조회
 const detailSprint = async (props) => {
   try {
-    const response = await jwtInstance.get(`/api/sprint/${props}`);
+    const response = await instance.get(`/api/sprint/${props}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: Cookies.get("token"),
+      }
+    });
     return response.data;
   } catch (error) {
     throw new Error(error.message);
@@ -75,16 +89,26 @@ const detailSprint = async (props) => {
 
 //sprint 수정
 const detailModify = async (props) => {
-  await jwtInstance.put(`/api/sprint/${props.id}`, {
+  await instance.put(`/api/sprint/${props.id}`, {
     title: props.title,
     content: props.content,
+  }, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: Cookies.get("token"),
+    }
   });
 };
 
 //sprint 삭제
 const deleteSprint = async (sprintId) => {
   try {
-    const response = await jwtInstance.delete(`/api/sprint/${sprintId}`);
+    const response = await instance.delete(`/api/sprint/${sprintId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: Cookies.get("token"),
+      }
+    });
     return response.data;
   } catch (error) {
     throw new Error(error.message);
@@ -94,9 +118,14 @@ const deleteSprint = async (sprintId) => {
 //신청하기
 const ApplySprint = async (props) => {
   try {
-    const response = await jwtInstance.post(`/api/sprint/join/${props.id}`, {
+    const response = await instance.post(`/api/sprint/join/${props.id}`, {
       position: props.position,
-      link: props.link,
+      githubLink: props.link,
+    }, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: Cookies.get("token"),
+      }
     });
     return response.data;
   } catch (error) {
@@ -116,7 +145,12 @@ const isLikePost = async (props) => {
 const myMakeSprint = async () => {
 
   try {
-    const response = await jwtInstance.get(`/api/sprint/mysprint`);
+    const response = await instance.get(`/api/sprint/mysprint`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: Cookies.get("token"),
+      }
+    });
     return response.data;
   } catch (error) {
     throw new Error(error.message);
@@ -126,7 +160,12 @@ const myMakeSprint = async () => {
 // 참여중인 스프린트 조회
 const participateSprint = async () => {
   try {
-    const response = await jwtInstance.get(`api/sprint/joinlist`);
+    const response = await instance.get(`api/sprint/joinlist`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: Cookies.get("token"),
+      }
+    });
     return response.data;
   } catch (error) {
     throw new Error(error.message);
@@ -137,10 +176,13 @@ const participateSprint = async () => {
 const writeComment = async (props) => {
   console.log(props)
   try {
-    const response = await jwtInstance.post(`/api/${props.sprintId}`, {
-      username: props.username,
-      nickname: props.nickname,
+    const response = await instance.post(`/api/comment/${props.sprintId}`, {
       content: props.content
+    }, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: Cookies.get("token"),
+      }
     });
     return response.data;
   } catch (error) {
@@ -149,9 +191,14 @@ const writeComment = async (props) => {
 };
 
 // 댓글 삭제하기
-const deleteComment = async (sprintId, commentId) => {
+const deleteComment = async (props) => {
   try {
-    const response = await jwtInstance.delete(`/api/${sprintId}/${commentId}`);
+    const response = await instance.delete(`/api/comment/${props.sprintId}/${props.commentId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: Cookies.get("token"),
+      }
+    });
     return response.data;
   } catch (error) {
     throw new Error(error.message);

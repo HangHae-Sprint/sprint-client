@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import * as CSS from "../components/component/style";
 import Header from "../components/Header";
 
@@ -8,6 +9,9 @@ const Home = () => {
 
     <Header/>
     <CSS.FontStyle>
+      <Link to='/main'>
+      <CSS.MainGo>스터디, 프로젝트 보러가기!</CSS.MainGo>
+      </Link>
     <CSS.SprintMain>
     <CSS.RunningField>
     <CSS.SprintLine></CSS.SprintLine>

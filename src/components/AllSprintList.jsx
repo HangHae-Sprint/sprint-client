@@ -14,10 +14,10 @@ const AllSprintList = () => {
   const navigate = useNavigate();
   // const [isVisible, setIsVisible] = useState('')
   //API 연결
-  const { isLoading, isError, data } = useQuery("allSprint", allSprint);
-console.log(data)
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error: {Error.message}</div>;
+  const { data } = useQuery("allSprint", allSprint);
+// console.log(data)
+//   if (isLoading) return <div>Loading...</div>;
+//   if (isError) return <div>Error: {Error.message}</div>;
 
   const detailOpen = (sprintId) => {
     if (!Cookies.get('token')) {
@@ -32,7 +32,7 @@ console.log(data)
     <CSS.background>
 
     <CSS.CardListsMain>
-      {data.map((item) => (
+      {data?.map((item) => (
         <CSS.contentBox>
         <CSS.SprintBox key={item.sprintId}>
           <CSS.CardTitle> {item.title}</CSS.CardTitle>
