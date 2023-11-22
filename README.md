@@ -1,6 +1,6 @@
 ### Mini project
 
-<h3 align="center"><b>SPrint</b></h3>
+<h3 align="center"><b>SPrint(스터디/프로젝트 구인 서비스)</b></h3>
 
 <h4 align="center">📆 2023.05.04 ~ 2023.05.11</h4>
 <br>
@@ -26,16 +26,14 @@
 <img src="https://camo.githubusercontent.com/ad176bb5a61237550550e47d7e77dd5d1a846518df44c522d2ba9c0a7da6379c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6769746875622d3138313731373f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465">
 <br>
 
-
 ## 🏃 SPrint(스터디/프로젝트 구인 서비스)
 
 프로젝트 협업을 위해 매일 같이 고민에 휩싸인 사람들</br>
 같이 프로젝트를 구현할 사람들을 어떻게 하면 쉽게 구할 수 있을까?</br>
+
 - 모집글을 통하여 쉽게 사람들을 구하기.
 - 모집글의 현황을 통해 어느 프로젝트에 참여할 수 있는지 한눈에 확인하기.
 - 각 기술스택의 사람들이 자유롭게 신청하기.
-
-#### 바로가기 👉 http://54.180.24.156:3000
 
 </br>
 
@@ -43,38 +41,42 @@
 
 - 주제 : 프로젝트 협업을 위한 구인 서비스
 - 기간 : 2023.05.04 ~ 2023.05.11
-- 협업 notion : [notion](https://climbing-marjoram-ab8.notion.site/SPRINT-S-A-715632e4b492445bb91d3941a992d744)
+- 협업 notion : [notion](https://slodev.notion.site/SPRINT-715632e4b492445bb91d3941a992d744?pvs=4)
 - FE Repo : [https://github.com/HangHae-Sprint/sprint-client.git](https://github.com/HangHae-Sprint/sprint-client.git)
 - BE Repo : [https://github.com/HangHae-Sprint/SPrint-Server.git](https://github.com/HangHae-Sprint/SPrint-Server.git)
-- **시연 영상** : [url](https://youtu.be/68kdRp359K4)
+- **시연 영상**
+  <br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Video Label](https://img.youtube.com/vi/68kdRp359K4/0.jpg)](https://www.youtube.com/watch?v=68kdRp359K4)
 
 <br>
 
 ## 📚 Project Architecture
+
 <img src="https://user-images.githubusercontent.com/40461588/236686167-a2eadca9-02e4-4649-8dc6-17d7cfd4b494.png">
 
 <br>
 
 ## ☁️ API
+
 ### 👉 [API 보러 가기](https://www.notion.so/9c4818f5367c4eb9937a8dfee3795c7c?v=97dd279e18044089a3c93542e505149a)
+
 <br>
 
 ## 🧱 ERD
+
 ![스크린샷 2023-05-11 13 48 13](https://github.com/HangHae-Sprint/SPrint-Server/assets/108252926/1fb21994-9727-46cd-9ddd-4969f6307d75)
 
 <br>
 
 ## 🖥️ Member
+
 - Front: 최유리([Github](https://github.com/stella0905)), 최민재([Github](https://github.com/minjaechoi0518))
 - Back: 강재형([Github](https://github.com/mottoslo)), 김민규([Github](https://github.com/kmg0485)), 정종현([Github](https://github.com/Shuan75)), 황인용([Github](https://github.com/InyongHwang))
 
-|            [🚩최유리](https://github.com/stella0905)             |                                  [최민재](https://github.com/minjaechoi0518)                                   |[🚩강재형](https://github.com/mottoslo)|[김민규](https://github.com/kmg0485)|[정종현](https://github.com/Shuan75)|[황인용](https://github.com/InyongHwang)|
-|:---:|:-----------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------:|
-| ![최유리](https://avatars.githubusercontent.com/u/109677566?v=4) |                        ![최민재](https://avatars.githubusercontent.com/u/128886164?v=4)                        | ![강재형](https://avatars.githubusercontent.com/u/57926597?v=4) | ![김민규](https://avatars.githubusercontent.com/u/108252926?v=4) | ![정종현](https://avatars.githubusercontent.com/u/46039659?v=47-8af22628c549.png) | ![황인용](https://avatars.githubusercontent.com/u/123296558?v=4) |
-|                           FRONT-END                           |                                                  FRONT-END                                                  |                           BACK-END                           |                                                    BACK-END                                                    |                                                    BACK-END                                                    |                                                    BACK-END                                                    |
+|            [🚩최유리](https://github.com/stella0905)             |           [최민재](https://github.com/minjaechoi0518)            |             [🚩강재형](https://github.com/mottoslo)             |               [김민규](https://github.com/kmg0485)               |                       [정종현](https://github.com/Shuan75)                        |             [황인용](https://github.com/InyongHwang)             |
+| :--------------------------------------------------------------: | :--------------------------------------------------------------: | :-------------------------------------------------------------: | :--------------------------------------------------------------: | :-------------------------------------------------------------------------------: | :--------------------------------------------------------------: |
+| ![최유리](https://avatars.githubusercontent.com/u/109677566?v=4) | ![최민재](https://avatars.githubusercontent.com/u/128886164?v=4) | ![강재형](https://avatars.githubusercontent.com/u/57926597?v=4) | ![김민규](https://avatars.githubusercontent.com/u/108252926?v=4) | ![정종현](https://avatars.githubusercontent.com/u/46039659?v=47-8af22628c549.png) | ![황인용](https://avatars.githubusercontent.com/u/123296558?v=4) |
+|                            FRONT-END                             |                            FRONT-END                             |                            BACK-END                             |                             BACK-END                             |                                     BACK-END                                      |                             BACK-END                             |
+
 <br>
-
-
-
-
-
